@@ -2,48 +2,51 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=1080, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>KERNN OS</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-  <main class="app">
+  <div class="page-shell" id="pageShell">
+    <main class="device" id="device">
 
-    <section class="screen splash" id="splash">
-      <div class="texture"></div>
+      <!-- SPLASH -->
+      <section class="panel splash active" id="splash">
+        <div class="texture"></div>
 
-      <div class="splash-mark">
-        <span>K</span><span>E</span><span>R</span><span>N</span><span>N</span>
-      </div>
+        <div class="splash-type">
+          <span>K</span><span>E</span><span>R</span><span>N</span><span>N</span>
+        </div>
 
-      <div class="splash-panel">
-        <p class="eyebrow">JOURNALING TIPOGRÁFICO</p>
-        <h1>KERNN</h1>
-        <p>El espejo de tu mente.</p>
-      </div>
+        <div class="splash-card">
+          <p class="eyebrow">Journaling tipográfico</p>
+          <h1>KERNN</h1>
+          <p class="serif">El espejo de tu mente.</p>
+          <button id="splashBtn">Ingresar al sistema</button>
+        </div>
 
-      <div class="splash-line">
-        <span>tracking</span>
-        <span>weight</span>
-        <span>leading</span>
-      </div>
-    </section>
+        <div class="splash-footer">
+          <span>Tracking</span>
+          <span>Weight</span>
+          <span>Leading</span>
+        </div>
+      </section>
 
-    <section class="screen login" id="login">
-      <div class="texture"></div>
+      <!-- LOGIN -->
+      <section class="panel login" id="login">
+        <div class="texture"></div>
 
-      <header class="login-header">
-        <h2>KERNN</h2>
-        <div class="dots"><span></span><span></span><span></span></div>
-      </header>
+        <header class="login-top">
+          <h2>KERNN</h2>
+          <div><span></span><span></span><span></span></div>
+        </header>
 
-      <article class="login-card">
-        <p class="eyebrow dark">LOGIN</p>
-        <h1>Iniciar sesión</h1>
-        <p class="subtitle">Ingresá tus datos para continuar.</p>
+        <article class="login-card">
+          <p class="eyebrow dark">Login</p>
+          <h1>Iniciar sesión</h1>
+          <p class="login-text">Ingresá tus datos para continuar.</p>
 
-        <form>
           <label>Correo</label>
           <div class="field">
             <span></span>
@@ -56,140 +59,141 @@
             <input type="password" value="12345678" />
           </div>
 
-          <div class="login-options">
-            <div><b>✓</b> Recordarme</div>
+          <div class="login-row">
+            <p><b>✓</b> Recordarme</p>
             <a href="#">Olvidé mi acceso</a>
           </div>
 
-          <button type="button" id="enterBtn">
+          <button class="enter-btn" id="enterBtn">
             ENTRAR <strong>→</strong>
           </button>
 
           <p class="create">No tenés cuenta? <b>Crear una</b></p>
-        </form>
-      </article>
-    </section>
-
-    <section class="home" id="home">
-      <div class="texture"></div>
-      <div class="scroll-progress" id="scrollProgress"></div>
-
-      <header class="home-header">
-        <p>HOY, 14:32</p>
-        <h2>KERNN OS</h2>
-        <div class="menu"><span></span><span></span></div>
-      </header>
-
-      <section class="home-hero reveal">
-        <div>
-          <p class="eyebrow dark">RITUAL ACTIVO</p>
-          <h1>Comienza<br>a escribir</h1>
-          <p>Acceso al lienzo infinito.</p>
-        </div>
-        <button><span></span></button>
+        </article>
       </section>
 
-      <section class="dashboard">
+      <!-- HOME -->
+      <section class="panel home" id="home">
+        <div class="texture"></div>
+        <div class="progress" id="progress"></div>
 
-        <article class="card dark-card reveal">
-          <p class="eyebrow">TUS SEÑALES HOY</p>
-          <div class="metric"><span>TRACKING</span><b>+0.02</b></div>
-          <div class="metric"><span>WEIGHT</span><b>410</b></div>
-          <div class="metric"><span>LEADING</span><b>1.30</b></div>
-        </article>
+        <header class="home-top">
+          <p>HOY, 14:32</p>
+          <h2>KERNN OS</h2>
+          <div class="menu"><span></span><span></span></div>
+        </header>
 
-        <article class="card light-card reveal">
-          <p class="eyebrow dark">ÚLTIMAS ENTRADAS</p>
-          <h3>Entrada del Lunes <span>14:30</span></h3>
-          <em>No sé muy bien...<br>(tracking expanded)</em>
-          <hr />
-          <h3>Entrada del Domingo <span>09:15</span></h3>
-          <strong>Claridad absoluta.</strong>
-        </article>
-
-        <article class="card dark-card quote reveal">
-          <p class="eyebrow">NÚCLEO DE REFLEXIÓN</p>
-          <p>Reflexión del día</p>
-          <h2>¿Cómo resuenan tus silencios?</h2>
-        </article>
-
-        <article class="card light-card reveal">
-          <p class="eyebrow dark">CONFIGURACIÓN DEL SISTEMA</p>
-          <div class="option"><span>+</span> Calibración de Ejes</div>
-          <div class="option"><span>▤</span> Paleta Visual</div>
-        </article>
-
-        <article class="card dark-card wide reveal">
-          <p class="eyebrow">HABIT TRACKER EMOCIONAL</p>
-          <div class="legend">
-            <span>Duda</span><span>Claridad</span><span>Intensidad</span>
+        <section class="hero reveal">
+          <div>
+            <p class="eyebrow dark">Ritual activo</p>
+            <h1>Comienza<br>a escribir</h1>
+            <p>Acceso al lienzo infinito.</p>
           </div>
-          <div class="bars">
-            <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-          </div>
-        </article>
-
-      </section>
-
-      <section class="analysis">
-        <div class="section-title reveal">
-          <p>SISTEMA DE LECTURA</p>
-          <h2>Historial y análisis</h2>
-        </div>
+          <button><span></span></button>
+        </section>
 
         <section class="dashboard">
 
-          <article class="card dark-card reveal">
-            <p class="eyebrow">RESUMEN MENSUAL</p>
-            <div class="metric"><span>Total de Entradas</span><b>24</b></div>
-            <div class="metric"><span>Días Activos</span><b>19/30</b></div>
-            <div class="metric"><span>Palabras Totales</span><b>5.600</b></div>
-            <div class="metric"><span>Velocidad</span><b>42 ppm</b></div>
+          <article class="card dark reveal">
+            <p class="eyebrow">Tus señales hoy</p>
+            <div class="metric"><span>Tracking</span><b>+0.02</b></div>
+            <div class="metric"><span>Weight</span><b>410</b></div>
+            <div class="metric"><span>Leading</span><b>1.30</b></div>
           </article>
 
-          <article class="card light-card featured reveal">
-            <p class="eyebrow dark">REFLEXIÓN DESTACADA</p>
-            <h3>Entrada del Jueves</h3>
-            <h2>¿Cuál es la forma de mi miedo hoy?</h2>
-            <button>Ver más reflexiones</button>
+          <article class="card light reveal">
+            <p class="eyebrow dark">Últimas entradas</p>
+            <h3>Entrada del Lunes <span>14:30</span></h3>
+            <em>No sé muy bien...<br>(tracking expanded)</em>
+            <hr>
+            <h3>Entrada del Domingo <span>09:15</span></h3>
+            <strong>Claridad absoluta.</strong>
           </article>
 
-          <article class="card light-card reveal">
-            <p class="eyebrow dark">PATRONES TIPOGRÁFICOS</p>
-            <div class="metric light"><span>[–] Caos</span><b>12%</b></div>
-            <div class="metric light"><span>[=] Claridad</span><b>65%</b></div>
-            <div class="metric light"><span>[+] Intensidad</span><b>23%</b></div>
-            <strong>Mayoría de escritura clara y estable.</strong>
+          <article class="card dark quote reveal">
+            <p class="eyebrow">Núcleo de reflexión</p>
+            <p>Reflexión del día</p>
+            <h2>¿Cómo resuenan tus silencios?</h2>
           </article>
 
-          <article class="card dark-card quote reveal">
-            <p class="eyebrow">INSIGHT DE KERNN</p>
-            <p>Sugerencia de práctica:</p>
-            <h2>Explorá la duda sin expandir el tracking.</h2>
+          <article class="card light reveal">
+            <p class="eyebrow dark">Configuración</p>
+            <div class="option"><b>+</b> Calibración de Ejes</div>
+            <div class="option"><b>▤</b> Paleta Visual</div>
           </article>
 
-          <article class="card dark-card reveal">
-            <p class="eyebrow">OBJETIVOS DE RITUAL</p>
-            <div class="metric"><span>Meta de Mayo</span><b>25 entradas</b></div>
-            <div class="metric"><span>Actual</span><b>2/25</b></div>
-            <div class="metric"><span>Racha actual</span><b>2 días</b></div>
-          </article>
-
-          <article class="card light-card reveal">
-            <p class="eyebrow dark">GESTIÓN DE DATOS</p>
-            <div class="option"><span>✓</span> Exportar Historial</div>
-            <div class="option"><span>×</span> Eliminar Entradas</div>
+          <article class="card dark wide reveal">
+            <p class="eyebrow">Habit tracker emocional</p>
+            <div class="legend">
+              <span>Duda</span><span>Claridad</span><span>Intensidad</span>
+            </div>
+            <div class="bars">
+              <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+            </div>
           </article>
 
         </section>
+
+        <section class="analysis">
+          <div class="section-title reveal">
+            <p>Sistema de lectura</p>
+            <h2>Historial y análisis</h2>
+          </div>
+
+          <section class="dashboard">
+
+            <article class="card dark reveal">
+              <p class="eyebrow">Resumen mensual</p>
+              <div class="metric"><span>Total de entradas</span><b>24</b></div>
+              <div class="metric"><span>Días activos</span><b>19/30</b></div>
+              <div class="metric"><span>Palabras totales</span><b>5.600</b></div>
+              <div class="metric"><span>Velocidad</span><b>42 ppm</b></div>
+            </article>
+
+            <article class="card light featured reveal">
+              <p class="eyebrow dark">Reflexión destacada</p>
+              <h3>Entrada del Jueves</h3>
+              <h2>¿Cuál es la forma de mi miedo hoy?</h2>
+              <button>Ver más reflexiones</button>
+            </article>
+
+            <article class="card light reveal">
+              <p class="eyebrow dark">Patrones tipográficos</p>
+              <div class="metric light-line"><span>[–] Caos</span><b>12%</b></div>
+              <div class="metric light-line"><span>[=] Claridad</span><b>65%</b></div>
+              <div class="metric light-line"><span>[+] Intensidad</span><b>23%</b></div>
+              <strong>Mayoría de escritura clara y estable.</strong>
+            </article>
+
+            <article class="card dark quote reveal">
+              <p class="eyebrow">Insight de KERNN</p>
+              <p>Sugerencia de práctica:</p>
+              <h2>Explorá la duda sin expandir el tracking.</h2>
+            </article>
+
+            <article class="card dark reveal">
+              <p class="eyebrow">Objetivos de ritual</p>
+              <div class="metric"><span>Meta de Mayo</span><b>25 entradas</b></div>
+              <div class="metric"><span>Actual</span><b>2/25</b></div>
+              <div class="metric"><span>Racha actual</span><b>2 días</b></div>
+            </article>
+
+            <article class="card light reveal">
+              <p class="eyebrow dark">Gestión de datos</p>
+              <div class="option"><b>✓</b> Exportar Historial</div>
+              <div class="option"><b>×</b> Eliminar Entradas</div>
+            </article>
+
+          </section>
+        </section>
+
+        <footer class="reveal">
+          Volver a Panel Principal KERNN OS
+        </footer>
       </section>
 
-      <footer class="reveal">
-        Volver a Panel Principal KERNN OS
-      </footer>
-    </section>
-
-  </main>
+    </main>
+  </div>
 
   <script src="script.js"></script>
 </body>
