@@ -10,6 +10,7 @@ const enterBtn = document.getElementById("enterBtn");
 const progress = document.getElementById("progress");
 
 const revealElements = document.querySelectorAll(".reveal");
+const cards = document.querySelectorAll(".card");
 
 function viewportWidth() {
   return window.visualViewport ? window.visualViewport.width : window.innerWidth;
@@ -56,7 +57,10 @@ enterBtn.addEventListener("click", () => {
   showPanel(home);
 
   setTimeout(() => {
-    revealElements.forEach(element => observer.observe(element));
+    revealElements.forEach((element, index) => {
+      element.style.setProperty("--delay", `${Math.min(index * 55, 330)}ms`);
+      observer.observe(element);
+    });
   }, 180);
 });
 
@@ -72,14 +76,36 @@ const observer = new IntersectionObserver(
 );
 
 function updateProgress() {
-  if (!home.classList.contains("active")) return;
-
   const max = document.documentElement.scrollHeight - window.innerHeight;
-  const value = max > 0 ? (window.scrollY / max) * 100 : 0;
-  progress.style.width = `${value}%`;
+  const value = max > 0 ? window.scrollY / max : 0;
+
+  document.documentElement.style.setProperty("--scroll", value.toFixed(3));
+
+  if (home.classList.contains("active")) {
+    progress.style.width = `${value * 100}%`;
+  }
 }
+
+cards.forEach(card => {
+  card.addEventListener("pointermove", event => {
+    const rect = card.getBoundingClientRect();
+    const x = ((event.clientX - rect.left) / rect.width) * 100;
+    const y = ((event.clientY - rect.top) / rect.height) * 100;
+
+    card.style.setProperty("--mx", `${x}%`);
+    card.style.setProperty("--my", `${y}%`);
+    card.style.setProperty("--glow", "1");
+  });
+
+  card.addEventListener("pointerleave", () => {
+    card.style.setProperty("--glow", "0");
+  });
+});
 
 window.addEventListener("resize", setScale);
 window.addEventListener("orientationchange", setScale);
 window.addEventListener("scroll", updateProgress);
-window.addEventListener("load", setScale);
+window.addEventListener("load", () => {
+  setScale();
+  updateProgress();
+});
