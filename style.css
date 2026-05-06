@@ -13,12 +13,10 @@
   --cream: #f7ead9;
   --cream-2: #fff8ed;
   --sand: #e7ceb4;
-  --sand-2: #d6b99d;
 
   --muted: #bba7a0;
   --muted-dark: #5a3335;
   --red: #e94458;
-  --rose: #c87578;
 
   --line-light: rgba(255,255,255,.12);
   --line-dark: rgba(23,4,7,.13);
@@ -89,8 +87,6 @@ button {
   pointer-events: auto;
 }
 
-/* CAPAS ATMOSFÉRICAS */
-
 .noise {
   position: absolute;
   inset: 0;
@@ -145,11 +141,65 @@ button {
   color: var(--muted-dark);
 }
 
-/* SPLASH PREMIUM */
+/* HEADERS / FOOTERS */
+
+.app-header {
+  position: relative;
+  z-index: 8;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.app-header h2 {
+  margin: 0;
+  color: var(--cream-2);
+  font-size: 72px;
+  letter-spacing: 22px;
+  font-weight: 900;
+}
+
+.app-footer {
+  position: absolute;
+  left: 92px;
+  right: 92px;
+  bottom: 86px;
+  z-index: 8;
+  min-height: 92px;
+  padding: 0 34px;
+  border-radius: 999px;
+  background: rgba(19,3,5,.34);
+  border: 1px solid rgba(255,255,255,.09);
+  backdrop-filter: blur(18px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: rgba(247,234,217,.68);
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: 850;
+}
+
+/* SPLASH */
 
 .splash {
   display: grid;
   place-items: center;
+  padding: 120px 92px 210px;
+}
+
+.splash-header {
+  position: absolute;
+  top: 86px;
+  left: 92px;
+  right: 92px;
+  color: rgba(247,234,217,.72);
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-weight: 900;
 }
 
 .splash::before {
@@ -251,41 +301,10 @@ button {
   color: var(--cream);
 }
 
-.splash-system {
-  position: absolute;
-  left: 110px;
-  right: 110px;
-  bottom: 145px;
-  z-index: 3;
-  display: flex;
-  justify-content: space-between;
-  color: rgba(247,234,217,.56);
-  font-size: 24px;
-  text-transform: uppercase;
-  letter-spacing: 4px;
-  font-weight: 850;
-}
-
 /* LOGIN */
 
 .login {
-  padding: 145px 86px;
-}
-
-.topbar {
-  position: relative;
-  z-index: 4;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.topbar h2 {
-  margin: 0;
-  color: var(--cream-2);
-  font-size: 72px;
-  letter-spacing: 22px;
-  font-weight: 900;
+  padding: 145px 86px 210px;
 }
 
 .status-dots {
@@ -312,7 +331,7 @@ button {
 .login-card {
   position: relative;
   z-index: 4;
-  margin-top: 300px;
+  margin-top: 265px;
   padding: 112px 70px 76px;
   border-radius: 58px;
   color: var(--dark);
@@ -500,7 +519,7 @@ label {
 
 .home {
   min-height: 3840px;
-  padding: 138px 92px 120px;
+  padding: 138px 92px 230px;
   overflow: visible;
 }
 
@@ -519,16 +538,16 @@ label {
   box-shadow: 0 0 28px rgba(233,68,88,.45);
 }
 
-.home-top {
-  position: relative;
-  z-index: 5;
-  margin-bottom: 58px;
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
+.home-header {
+  position: sticky;
+  top: 0;
+  margin: -138px -92px 58px;
+  padding: 138px 92px 36px;
+  background: linear-gradient(180deg, rgba(19,3,5,.9), rgba(19,3,5,.55), transparent);
+  backdrop-filter: blur(18px);
 }
 
-.home-top div:first-child span {
+.time-block span {
   display: block;
   margin-bottom: 5px;
   color: rgba(247,234,217,.48);
@@ -538,14 +557,14 @@ label {
   font-weight: 900;
 }
 
-.home-top div:first-child p {
+.time-block p {
   margin: 0;
   color: var(--muted);
   font-size: 31px;
   font-weight: 800;
 }
 
-.home-top h2 {
+.home-header h2 {
   margin: 0;
   color: var(--cream);
   font-size: 40px;
@@ -930,15 +949,46 @@ label {
   font-weight: 850;
 }
 
-footer {
-  margin-top: 140px;
-  text-align: center;
-  color: var(--muted);
-  font-size: 26px;
-  text-decoration: underline;
+.home-footer {
+  position: relative;
+  z-index: 6;
+  margin-top: 150px;
+  min-height: 116px;
+  padding: 26px 34px;
+  border-radius: 36px;
+  background: rgba(19,3,5,.42);
+  border: 1px solid rgba(255,255,255,.09);
+  backdrop-filter: blur(18px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-/* REVEAL */
+.home-footer span {
+  display: block;
+  color: var(--cream);
+  font-size: 25px;
+  letter-spacing: 3px;
+  font-weight: 900;
+}
+
+.home-footer p {
+  margin: 7px 0 0;
+  color: var(--muted);
+  font-size: 22px;
+}
+
+.home-footer nav {
+  display: flex;
+  gap: 22px;
+}
+
+.home-footer a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 22px;
+  font-weight: 700;
+}
 
 .reveal {
   opacity: 0;

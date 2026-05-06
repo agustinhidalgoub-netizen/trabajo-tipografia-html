@@ -11,9 +11,15 @@
   <div class="stage" id="stage">
     <main class="app" id="app">
 
+      <!-- SPLASH -->
       <section class="panel splash active" id="splash">
         <div class="noise"></div>
         <div class="aura"></div>
+
+        <header class="app-header splash-header">
+          <span>KERNN OS</span>
+          <span>01</span>
+        </header>
 
         <div class="splash-symbol" id="splashBtn">
           <div class="logo-mark">K</div>
@@ -21,24 +27,27 @@
           <p>Journaling tipográfico emocional</p>
         </div>
 
-        <div class="splash-system">
+        <footer class="app-footer splash-footer">
           <span>Tracking</span>
           <span>Weight</span>
           <span>Leading</span>
-        </div>
+        </footer>
       </section>
 
+      <!-- LOGIN -->
       <section class="panel login" id="login">
         <div class="noise"></div>
         <div class="aura"></div>
 
-        <header class="topbar">
+        <header class="app-header">
           <h2>KERNN</h2>
-          <div class="status-dots"><span></span><span></span><span></span></div>
+          <div class="status-dots">
+            <span></span><span></span><span></span>
+          </div>
         </header>
 
         <article class="login-card">
-          <span class="tag">Acceso privado</span>
+          <span class="tag dark">Acceso privado</span>
           <h1>Iniciar sesión</h1>
           <p>Entrá a tu sistema de escritura, señales y reflexión.</p>
 
@@ -66,21 +75,28 @@
 
           <small>No tenés cuenta? <b>Crear una</b></small>
         </article>
+
+        <footer class="app-footer login-footer">
+          <span>Ritual</span>
+          <span>Claridad</span>
+          <span>Registro</span>
+        </footer>
       </section>
 
+      <!-- HOME -->
       <section class="panel home" id="home">
         <div class="noise"></div>
         <div class="progress" id="progress"></div>
 
-        <header class="home-top">
-          <div>
+        <header class="app-header home-header">
+          <div class="time-block">
             <span>Hoy</span>
             <p>14:32</p>
           </div>
 
           <h2>KERNN OS</h2>
 
-          <button class="menu" type="button">
+          <button class="menu" type="button" aria-label="Abrir menú">
             <i></i><i></i>
           </button>
         </header>
@@ -92,7 +108,7 @@
             <p>Un espacio para transformar tu estado de ánimo en señales tipográficas.</p>
           </div>
 
-          <button class="write-btn" type="button">
+          <button class="write-btn" type="button" aria-label="Escribir">
             <i></i>
           </button>
         </section>
@@ -109,7 +125,7 @@
             <span class="tag dark">Últimas entradas</span>
             <h3>Entrada del Lunes <small>14:30</small></h3>
             <em>No sé muy bien...<br>(tracking expanded)</em>
-            <hr />
+            <hr>
             <h3>Entrada del Domingo <small>09:15</small></h3>
             <strong>Claridad absoluta.</strong>
           </article>
@@ -188,7 +204,18 @@
           </section>
         </section>
 
-        <footer class="reveal">Volver a Panel Principal KERNN OS</footer>
+        <footer class="home-footer reveal">
+          <div>
+            <span>KERNN OS</span>
+            <p>Panel principal</p>
+          </div>
+
+          <nav>
+            <a href="#">Ritual</a>
+            <a href="#">Historial</a>
+            <a href="#">Sistema</a>
+          </nav>
+        </footer>
       </section>
 
     </main>
