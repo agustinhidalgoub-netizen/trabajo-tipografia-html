@@ -1,75 +1,49 @@
-const splash = document.getElementById("splash");
-const login = document.getElementById("login");
-const home = document.getElementById("home");
+document.addEventListener("DOMContentLoaded", () => {
+  const splash = document.getElementById("splash");
+  const login = document.getElementById("login");
+  const home = document.getElementById("home");
+  const splashBtn = document.getElementById("splashBtn");
+  const enterBtn = document.getElementById("enterBtn");
+  const progress = document.getElementById("progress");
+  const revealElements = document.querySelectorAll(".reveal");
 
-const splashBtn = document.getElementById("splashBtn");
-const enterBtn = document.getElementById("enterBtn");
-const progress = document.getElementById("progress");
+  function showPanel(panel) {
+    document.querySelectorAll(".screen").forEach(screen => {
+      screen.classList.remove("active");
+    });
 
-const revealElements = document.querySelectorAll(".reveal");
-const cards = document.querySelectorAll(".card");
+    panel.classList.add("active");
+    window.scrollTo(0, 0);
 
-function showPanel(panel) {
-  document.querySelectorAll(".panel").forEach(item => {
-    item.classList.remove("active");
-  });
-
-  panel.classList.add("active");
-  window.scrollTo({ top: 0, behavior: "smooth" });
-
-  if (panel === home) {
-    setTimeout(() => {
-      revealElements.forEach((element, index) => {
-        element.style.setProperty("--delay", `${Math.min(index * 55, 330)}ms`);
-        observer.observe(element);
-      });
-    }, 150);
+    if (panel === home) {
+      setTimeout(() => {
+        revealElements.forEach(item => observer.observe(item));
+      }, 100);
+    }
   }
-}
 
-splashBtn.addEventListener("click", () => showPanel(login));
-
-setTimeout(() => {
-  if (splash.classList.contains("active")) {
-    showPanel(login);
-  }
-}, 2600);
-
-enterBtn.addEventListener("click", () => showPanel(home));
-
-const observer = new IntersectionObserver(
-  entries => {
+  const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add("visible");
       }
     });
-  },
-  { threshold: 0.14 }
-);
+  }, { threshold: 0.12 });
 
-function updateProgress() {
-  if (!home.classList.contains("active")) return;
+  splashBtn.addEventListener("click", () => showPanel(login));
+  enterBtn.addEventListener("click", () => showPanel(home));
 
-  const max = document.documentElement.scrollHeight - window.innerHeight;
-  const value = max > 0 ? window.scrollY / max : 0;
-  progress.style.width = `${value * 100}%`;
-}
+  setTimeout(() => {
+    if (splash.classList.contains("active")) {
+      showPanel(login);
+    }
+  }, 2400);
 
-cards.forEach(card => {
-  card.addEventListener("pointermove", event => {
-    const rect = card.getBoundingClientRect();
-    const x = ((event.clientX - rect.left) / rect.width) * 100;
-    const y = ((event.clientY - rect.top) / rect.height) * 100;
+  window.addEventListener("scroll", () => {
+    if (!home.classList.contains("active")) return;
 
-    card.style.setProperty("--mx", `${x}%`);
-    card.style.setProperty("--my", `${y}%`);
-    card.style.setProperty("--glow", "1");
-  });
-
-  card.addEventListener("pointerleave", () => {
-    card.style.setProperty("--glow", "0");
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    const value = max > 0 ? (window.scrollY / max) * 100 : 0;
+    progress.style.width = `${value}%`;
   });
 });
-
-window.addEventListener("scroll", updateProgress);
