@@ -1,5 +1,5 @@
-const shell = document.getElementById("pageShell");
-const device = document.getElementById("device");
+const stage = document.getElementById("stage");
+const app = document.getElementById("app");
 
 const splash = document.getElementById("splash");
 const login = document.getElementById("login");
@@ -11,26 +11,25 @@ const progress = document.getElementById("progress");
 
 const revealElements = document.querySelectorAll(".reveal");
 
-function getViewportWidth() {
+function viewportWidth() {
   return window.visualViewport ? window.visualViewport.width : window.innerWidth;
 }
 
 function setScale() {
-  const viewportWidth = getViewportWidth();
-  const scale = viewportWidth / 1080;
-
+  const scale = viewportWidth() / 1080;
   document.documentElement.style.setProperty("--scale", scale);
 
   const activePanel = document.querySelector(".panel.active");
   const activeHeight = activePanel.scrollHeight;
 
-  shell.style.height = `${activeHeight * scale}px`;
-  device.style.height = `${activeHeight}px`;
+  stage.style.width = `${1080 * scale}px`;
+  stage.style.height = `${activeHeight * scale}px`;
+  app.style.height = `${activeHeight}px`;
 }
 
 function showPanel(panel) {
-  document.querySelectorAll(".panel").forEach(section => {
-    section.classList.remove("active");
+  document.querySelectorAll(".panel").forEach(item => {
+    item.classList.remove("active");
   });
 
   panel.classList.add("active");
@@ -46,6 +45,12 @@ function showPanel(panel) {
 splashBtn.addEventListener("click", () => {
   showPanel(login);
 });
+
+setTimeout(() => {
+  if (splash.classList.contains("active")) {
+    showPanel(login);
+  }
+}, 2600);
 
 enterBtn.addEventListener("click", () => {
   showPanel(home);
@@ -71,7 +76,6 @@ function updateProgress() {
 
   const max = document.documentElement.scrollHeight - window.innerHeight;
   const value = max > 0 ? (window.scrollY / max) * 100 : 0;
-
   progress.style.width = `${value}%`;
 }
 
