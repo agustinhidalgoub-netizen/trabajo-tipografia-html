@@ -16,22 +16,17 @@
         <div class="noise"></div>
         <div class="aura"></div>
 
-        <header class="app-header splash-header">
-          <span>KERNN OS</span>
-          <span>01</span>
-        </header>
-
         <div class="splash-symbol" id="splashBtn">
           <div class="logo-mark">K</div>
           <h1>KERNN</h1>
           <p>Journaling tipográfico emocional</p>
         </div>
 
-        <footer class="app-footer splash-footer">
+        <div class="splash-system">
           <span>Tracking</span>
           <span>Weight</span>
           <span>Leading</span>
-        </footer>
+        </div>
       </section>
 
       <!-- LOGIN -->
@@ -39,10 +34,16 @@
         <div class="noise"></div>
         <div class="aura"></div>
 
-        <header class="app-header">
+        <header class="mobile-header">
+          <button class="header-icon" type="button" aria-label="Menú">
+            <i></i><i></i><i></i>
+          </button>
+
           <h2>KERNN</h2>
-          <div class="status-dots">
-            <span></span><span></span><span></span>
+
+          <div class="header-actions">
+            <button class="header-icon small" type="button" aria-label="Buscar">⌕</button>
+            <button class="header-icon small" type="button" aria-label="Perfil">◌</button>
           </div>
         </header>
 
@@ -75,12 +76,6 @@
 
           <small>No tenés cuenta? <b>Crear una</b></small>
         </article>
-
-        <footer class="app-footer login-footer">
-          <span>Ritual</span>
-          <span>Claridad</span>
-          <span>Registro</span>
-        </footer>
       </section>
 
       <!-- HOME -->
@@ -88,17 +83,17 @@
         <div class="noise"></div>
         <div class="progress" id="progress"></div>
 
-        <header class="app-header home-header">
-          <div class="time-block">
-            <span>Hoy</span>
-            <p>14:32</p>
-          </div>
+        <header class="mobile-header home-main-header">
+          <button class="header-icon" type="button" aria-label="Menú">
+            <i></i><i></i><i></i>
+          </button>
 
           <h2>KERNN OS</h2>
 
-          <button class="menu" type="button" aria-label="Abrir menú">
-            <i></i><i></i>
-          </button>
+          <div class="header-actions">
+            <button class="header-icon small" type="button" aria-label="Buscar">⌕</button>
+            <button class="header-icon small" type="button" aria-label="Notificaciones">◒</button>
+          </div>
         </header>
 
         <section class="hero reveal">
@@ -204,17 +199,21 @@
           </section>
         </section>
 
-        <footer class="home-footer reveal">
-          <div>
-            <span>KERNN OS</span>
-            <p>Panel principal</p>
-          </div>
+        <footer class="bottom-nav">
+          <button class="active" type="button">
+            <span>⌂</span>
+            <p>Inicio</p>
+          </button>
 
-          <nav>
-            <a href="#">Ritual</a>
-            <a href="#">Historial</a>
-            <a href="#">Sistema</a>
-          </nav>
+          <button type="button">
+            <span>✎</span>
+            <p>Actividad</p>
+          </button>
+
+          <button type="button">
+            <span>◉</span>
+            <p>Perfil</p>
+          </button>
         </footer>
       </section>
 
