@@ -11,8 +11,14 @@ const progress = document.getElementById("progress");
 
 const revealElements = document.querySelectorAll(".reveal");
 
+function getViewportWidth() {
+  return window.visualViewport ? window.visualViewport.width : window.innerWidth;
+}
+
 function setScale() {
-  const scale = Math.min(window.innerWidth / 1080, 1);
+  const viewportWidth = getViewportWidth();
+  const scale = viewportWidth / 1080;
+
   document.documentElement.style.setProperty("--scale", scale);
 
   const activePanel = document.querySelector(".panel.active");
@@ -28,25 +34,26 @@ function showPanel(panel) {
   });
 
   panel.classList.add("active");
-  window.scrollTo({ top: 0, behavior: "smooth" });
-  setTimeout(setScale, 50);
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+  setTimeout(setScale, 80);
 }
 
-function goToLogin() {
+splashBtn.addEventListener("click", () => {
   showPanel(login);
-}
+});
 
-function goToHome() {
+enterBtn.addEventListener("click", () => {
   showPanel(home);
+
   setTimeout(() => {
-    revealElements.forEach(el => observer.observe(el));
-  }, 200);
-}
-
-splashBtn.addEventListener("click", goToLogin);
-enterBtn.addEventListener("click", goToHome);
-
-setTimeout(goToLogin, 2800);
+    revealElements.forEach(element => observer.observe(element));
+  }, 180);
+});
 
 const observer = new IntersectionObserver(
   entries => {
@@ -56,7 +63,7 @@ const observer = new IntersectionObserver(
       }
     });
   },
-  { threshold: 0.15 }
+  { threshold: 0.14 }
 );
 
 function updateProgress() {
@@ -64,9 +71,11 @@ function updateProgress() {
 
   const max = document.documentElement.scrollHeight - window.innerHeight;
   const value = max > 0 ? (window.scrollY / max) * 100 : 0;
+
   progress.style.width = `${value}%`;
 }
 
 window.addEventListener("resize", setScale);
+window.addEventListener("orientationchange", setScale);
 window.addEventListener("scroll", updateProgress);
 window.addEventListener("load", setScale);
