@@ -2,7 +2,6 @@ const enterBtn = document.getElementById("enterBtn");
 const home = document.getElementById("home");
 const progress = document.getElementById("scrollProgress");
 const revealElements = document.querySelectorAll(".reveal");
-const parallaxElements = document.querySelectorAll(".parallax");
 
 enterBtn.addEventListener("click", () => {
   home.scrollIntoView({
@@ -11,7 +10,7 @@ enterBtn.addEventListener("click", () => {
   });
 });
 
-const revealObserver = new IntersectionObserver(
+const observer = new IntersectionObserver(
   entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -19,30 +18,17 @@ const revealObserver = new IntersectionObserver(
       }
     });
   },
-  {
-    threshold: 0.18
-  }
+  { threshold: 0.14 }
 );
 
-revealElements.forEach(element => {
-  revealObserver.observe(element);
-});
+revealElements.forEach(el => observer.observe(el));
 
-function updateScrollEffects() {
+function updateProgress() {
   const scrollTop = window.scrollY;
-  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-  const progressWidth = (scrollTop / docHeight) * 100;
-
-  progress.style.width = `${progressWidth}%`;
-
-  parallaxElements.forEach(element => {
-    const speed = Number(element.dataset.speed || 0);
-    const rect = element.getBoundingClientRect();
-    const movement = rect.top * speed;
-
-    element.style.transform = `translateY(${movement}px)`;
-  });
+  const total = document.documentElement.scrollHeight - window.innerHeight;
+  const percent = total > 0 ? (scrollTop / total) * 100 : 0;
+  progress.style.width = `${percent}%`;
 }
 
-window.addEventListener("scroll", updateScrollEffects);
-window.addEventListener("load", updateScrollEffects);
+window.addEventListener("scroll", updateProgress);
+window.addEventListener("load", updateProgress);
