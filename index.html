@@ -2,202 +2,506 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  />
+
   <title>KERNN OS</title>
+
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
+
   <main class="app">
 
+    <!-- SPLASH -->
+
     <section class="screen splash is-active" id="splash">
+
       <div class="grid"></div>
 
-      <button class="brand-system" id="splashBtn" type="button">
-        <div class="brand-letters">
-          <span>K</span><span>E</span><span>R</span><span>N</span><span>N</span>
+      <div class="ambient ambient-a"></div>
+      <div class="ambient ambient-b"></div>
+
+      <button class="splash-trigger" id="splashBtn">
+
+        <div class="hero-word">
+
+          <span>K</span>
+          <span>E</span>
+          <span>R</span>
+          <span>N</span>
+          <span>N</span>
+
         </div>
-        <p>El espejo tipográfico de tu mente</p>
+
+        <div class="hero-sub">
+
+          <p>
+            El espejo tipográfico de tu mente
+          </p>
+
+        </div>
+
       </button>
 
-      <div class="axis-footer">
+      <div class="splash-axis">
+
         <span>TRACKING</span>
         <span>WEIGHT</span>
         <span>LEADING</span>
+
       </div>
+
     </section>
+
+    <!-- LOGIN -->
 
     <section class="screen login" id="login">
+
       <div class="grid"></div>
 
-      <header class="login-brand">
-        <div class="mini-letters">
-          <span>K</span><span>E</span><span>R</span><span>N</span><span>N</span>
+      <div class="login-top">
+
+        <div class="login-word">
+
+          <span>K</span>
+          <span>E</span>
+          <span>R</span>
+          <span>N</span>
+          <span>N</span>
+
         </div>
-        <p>La identidad se ordena como interfaz.</p>
-      </header>
+
+        <p>
+          La expansión se transforma en sistema.
+        </p>
+
+      </div>
 
       <section class="login-panel">
-        <span class="caption">02 / acceso privado</span>
-        <h1>Iniciar sesión</h1>
 
-        <label>Correo</label>
-        <div class="type-input">
-          <span></span>
-          <input type="email" value="nombre@mail.com" />
+        <span class="system-label">
+          02 / acceso
+        </span>
+
+        <h1>
+          Iniciar sesión
+        </h1>
+
+        <label>
+          Correo
+        </label>
+
+        <div class="field">
+
+          <i></i>
+
+          <input
+            type="email"
+            value="nombre@mail.com"
+          />
+
         </div>
 
-        <label>Contraseña</label>
-        <div class="type-input">
-          <span></span>
-          <input type="password" value="12345678" />
+        <label>
+          Contraseña
+        </label>
+
+        <div class="field">
+
+          <i></i>
+
+          <input
+            type="password"
+            value="12345678"
+          />
+
         </div>
 
-        <button class="enter-btn" id="enterBtn" type="button">
-          <span>ENTRAR</span>
-          <b>→</b>
+        <button class="enter-button" id="enterBtn">
+
+          <span>
+            ENTRAR
+          </span>
+
+          <b>
+            →
+          </b>
+
         </button>
+
       </section>
+
     </section>
 
+    <!-- HOME -->
+
     <section class="screen home" id="home">
+
       <div class="grid"></div>
+
       <div class="progress" id="progress"></div>
 
+      <!-- HEADER -->
+
       <header class="home-header">
-        <button class="menu-btn" id="menuBtn" type="button">
-          <i></i><i></i><i></i>
+
+        <button class="menu-button" id="menuBtn">
+
+          <i></i>
+          <i></i>
+          <i></i>
+
         </button>
 
-        <div class="home-logo">
-          <span>K</span><span>E</span><span>R</span><span>N</span><span>N</span>
+        <div class="header-logo">
+
+          <span>K</span>
+          <span>E</span>
+          <span>R</span>
+          <span>N</span>
+          <span>N</span>
+
         </div>
 
-        <button class="focus-btn" id="focusBtn" type="button">◎</button>
+        <button class="focus-button" id="focusBtn">
+          ◎
+        </button>
+
       </header>
 
-      <aside class="drawer" id="drawer">
-        <button class="close-drawer" id="closeDrawer" type="button">×</button>
-        <h2>KERNN OS</h2>
+      <!-- MENU -->
+
+      <aside class="menu" id="menu">
+
+        <button class="close-menu" id="closeMenu">
+          ×
+        </button>
+
+        <h2>
+          KERNN OS
+        </h2>
+
         <nav>
-          <button data-jump="inicio">Inicio</button>
-          <button data-jump="proceso">Proceso</button>
-          <button data-jump="ejes">Ejes</button>
-          <button data-jump="lectura">Lectura</button>
+
+          <button data-jump="intro">
+            Inicio
+          </button>
+
+          <button data-jump="transition">
+            Proceso
+          </button>
+
+          <button data-jump="metrics">
+            Métricas
+          </button>
+
+          <button data-jump="reading">
+            Lectura
+          </button>
+
         </nav>
-        <p>La escritura emocional se transforma en variables tipográficas.</p>
+
+        <p>
+          La escritura emocional se transforma en comportamiento tipográfico.
+        </p>
+
       </aside>
 
-      <div class="drawer-bg" id="drawerBg"></div>
+      <div class="menu-backdrop" id="menuBackdrop"></div>
 
-      <section class="hero module" id="inicio">
-        <span class="caption dark">03 / sistema activo</span>
-        <h1 class="variable-title" id="variableTitle">Comienza a escribir</h1>
-        <p>El tracking, el peso y el interlineado dejan de ser recursos formales y pasan a funcionar como señales de lectura emocional.</p>
+      <!-- HERO -->
 
-        <button class="write-btn" id="writeBtn" type="button">
-          <span></span>
+      <section class="intro reveal" id="intro">
+
+        <span class="section-label">
+          03 / sistema activo
+        </span>
+
+        <h1 class="main-title" id="mainTitle">
+          Comienza a escribir
+        </h1>
+
+        <p>
+          El tracking, el peso y el interlineado dejan de ser recursos visuales y pasan a funcionar como señales emocionales.
+        </p>
+
+        <button class="write-button" id="writeBtn">
+
+          <i></i>
+
         </button>
 
-        <div class="quick-note" id="quickNote">
-          <small>Entrada rápida</small>
-          <p contenteditable="true">Hoy mi escritura se siente más abierta, pero todavía busca ritmo...</p>
+        <div class="writing-panel" id="writingPanel">
+
+          <small>
+            Entrada rápida
+          </small>
+
+          <p contenteditable="true">
+            Hoy mi escritura se siente más abierta, pero todavía busca ritmo...
+          </p>
+
         </div>
+
       </section>
 
-      <section class="scroll-stage" id="proceso">
-        <div class="scroll-sticky">
-          <span class="scroll-kicker">proceso tipográfico</span>
-          <h2 id="scrollHeadline">La palabra se abre.</h2>
+      <!-- TRANSITION SCROLL -->
 
-          <div class="kinetic-word" id="kineticWord">
-            <span>K</span><span>E</span><span>R</span><span>N</span><span>N</span>
+      <section class="transition-scroll" id="transition">
+
+        <div class="sticky-transition">
+
+          <span class="transition-kicker">
+            recorrido tipográfico
+          </span>
+
+          <h2 id="transitionTitle">
+            La palabra se expande.
+          </h2>
+
+          <div class="moving-word" id="movingWord">
+
+            <span>K</span>
+            <span>E</span>
+            <span>R</span>
+            <span>N</span>
+            <span>N</span>
+
           </div>
 
-          <div class="scroll-lines">
-            <i></i><i></i><i></i>
+          <div class="transition-lines">
+
+            <i></i>
+            <i></i>
+            <i></i>
+
           </div>
 
-          <p id="scrollCaption">El splash trabaja la expansión: la identidad aparece como materia tipográfica.</p>
-        </div>
-      </section>
+          <p id="transitionText">
 
-      <section class="axis-module module" id="ejes">
-        <div class="axis-heading">
-          <span>ejes tipográficos</span>
-          <h2>La emoción se mide como forma</h2>
+            El splash trabaja la expansión: la identidad aparece como materia tipográfica.
+
+          </p>
+
         </div>
 
-        <article class="axis-row" data-axis="tracking">
-          <p>Tracking</p>
-          <div><i></i></div>
-          <b>+0.02</b>
-        </article>
-
-        <article class="axis-row" data-axis="weight">
-          <p>Weight</p>
-          <div><i></i></div>
-          <b>410</b>
-        </article>
-
-        <article class="axis-row" data-axis="leading">
-          <p>Leading</p>
-          <div><i></i></div>
-          <b>1.30</b>
-        </article>
       </section>
 
-      <section class="marquee">
-        <span>TRACKING / WEIGHT / LEADING / RHYTHM / DENSITY / CLARITY /</span>
-        <span>TRACKING / WEIGHT / LEADING / RHYTHM / DENSITY / CLARITY /</span>
+      <!-- METRICS -->
+
+      <section class="metrics reveal" id="metrics">
+
+        <div class="metrics-top">
+
+          <span>
+            ejes tipográficos
+          </span>
+
+          <h2>
+            La emoción se mide como forma
+          </h2>
+
+        </div>
+
+        <article class="metric-row">
+
+          <p>
+            Tracking
+          </p>
+
+          <div>
+            <i></i>
+          </div>
+
+          <b>
+            +0.02
+          </b>
+
+        </article>
+
+        <article class="metric-row">
+
+          <p>
+            Weight
+          </p>
+
+          <div>
+            <i></i>
+          </div>
+
+          <b>
+            410
+          </b>
+
+        </article>
+
+        <article class="metric-row">
+
+          <p>
+            Leading
+          </p>
+
+          <div>
+            <i></i>
+          </div>
+
+          <b>
+            1.30
+          </b>
+
+        </article>
+
       </section>
 
-      <section class="reading-grid module" id="lectura">
-        <article class="reading-card dark">
-          <span class="caption">núcleo</span>
-          <h2>¿Cómo resuenan tus silencios?</h2>
-          <p>La pregunta aparece cuando el registro baja en intensidad, pero aumenta en repetición.</p>
+      <!-- MARQUEE -->
+
+      <section class="marquee-wrap">
+
+        <div class="marquee">
+
+          <span>
+            TRACKING / WEIGHT / LEADING / RHYTHM / DENSITY /
+          </span>
+
+          <span>
+            TRACKING / WEIGHT / LEADING / RHYTHM / DENSITY /
+          </span>
+
+        </div>
+
+      </section>
+
+      <!-- READING -->
+
+      <section class="reading reveal" id="reading">
+
+        <article class="card dark">
+
+          <span class="card-label">
+            núcleo
+          </span>
+
+          <h2>
+            ¿Cómo resuenan tus silencios?
+          </h2>
+
+          <p>
+            La pregunta aparece cuando el registro baja en intensidad pero aumenta en repetición.
+          </p>
+
         </article>
 
-        <article class="reading-card light">
-          <span class="caption dark">última entrada</span>
-          <h3>Entrada del lunes</h3>
-          <p class="sample-line">No sé muy bien...</p>
-          <p>Tracking expandido, ritmo irregular.</p>
+        <article class="card light">
+
+          <span class="card-label dark-text">
+            última entrada
+          </span>
+
+          <h3>
+            Entrada del lunes
+          </h3>
+
+          <p class="sample-text">
+            No sé muy bien...
+          </p>
+
+          <p>
+            Tracking expandido, ritmo irregular.
+          </p>
+
         </article>
 
-        <article class="reading-card dark wide">
-          <span class="caption">ritmo semanal</span>
+        <article class="card dark wide">
+
+          <span class="card-label">
+            ritmo semanal
+          </span>
+
           <div class="bars">
-            <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+
           </div>
+
         </article>
+
       </section>
 
-      <section class="scroll-text module">
-        <span>continuidad vertical</span>
-        <h2>La interfaz no cambia de pantalla: se transforma.</h2>
-        <p>El sistema mantiene el mismo comportamiento tipográfico: expansión, contracción, alineación y lectura progresiva.</p>
+      <!-- FINAL -->
+
+      <section class="final reveal">
+
+        <span>
+          continuidad vertical
+        </span>
+
+        <h2>
+          La interfaz no cambia de pantalla: se transforma.
+        </h2>
+
+        <p>
+          El mismo comportamiento tipográfico continúa entre splash, login y home mediante expansión, contracción y reorganización de la grilla.
+        </p>
+
       </section>
+
+      <!-- FOOTER -->
 
       <footer class="bottom-nav">
-        <button class="active" data-jump="inicio" type="button">
-          <span>⌂</span>
-          <p>Inicio</p>
+
+        <button class="active" data-jump="intro">
+
+          <span>
+            ⌂
+          </span>
+
+          <p>
+            Inicio
+          </p>
+
         </button>
-        <button data-jump="proceso" type="button">
-          <span>≋</span>
-          <p>Actividad</p>
+
+        <button data-jump="transition">
+
+          <span>
+            ≋
+          </span>
+
+          <p>
+            Actividad
+          </p>
+
         </button>
-        <button data-jump="lectura" type="button">
-          <span>◉</span>
-          <p>Perfil</p>
+
+        <button data-jump="reading">
+
+          <span>
+            ◉
+          </span>
+
+          <p>
+            Perfil
+          </p>
+
         </button>
+
       </footer>
+
     </section>
 
   </main>
 
   <script src="script.js"></script>
+
 </body>
 </html>

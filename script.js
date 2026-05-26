@@ -1,140 +1,316 @@
 document.addEventListener("DOMContentLoaded", () => {
+
+  function setViewportHeight() {
+
+    document.documentElement.style.setProperty(
+      "--vh",
+      `${window.innerHeight * 0.01}px`
+    );
+
+  }
+
+  setViewportHeight();
+
+  window.addEventListener(
+    "resize",
+    setViewportHeight
+  );
+
   const splash = document.getElementById("splash");
   const login = document.getElementById("login");
   const home = document.getElementById("home");
+
   const splashBtn = document.getElementById("splashBtn");
   const enterBtn = document.getElementById("enterBtn");
+
   const progress = document.getElementById("progress");
 
   const menuBtn = document.getElementById("menuBtn");
-  const drawer = document.getElementById("drawer");
-  const closeDrawer = document.getElementById("closeDrawer");
-  const drawerBg = document.getElementById("drawerBg");
+  const menu = document.getElementById("menu");
+  const closeMenu = document.getElementById("closeMenu");
+  const menuBackdrop = document.getElementById("menuBackdrop");
+
   const focusBtn = document.getElementById("focusBtn");
+
   const writeBtn = document.getElementById("writeBtn");
-  const quickNote = document.getElementById("quickNote");
+  const writingPanel = document.getElementById("writingPanel");
 
-  const variableTitle = document.getElementById("variableTitle");
-  const axisRows = document.querySelectorAll(".axis-row");
-  const modules = document.querySelectorAll(".module");
-  const jumpButtons = document.querySelectorAll("[data-jump]");
-  const scrollStage = document.querySelector(".scroll-stage");
-  const kineticWord = document.getElementById("kineticWord");
-  const scrollHeadline = document.getElementById("scrollHeadline");
-  const scrollCaption = document.getElementById("scrollCaption");
-  const scrollLines = document.querySelectorAll(".scroll-lines i");
+  const mainTitle = document.getElementById("mainTitle");
 
-  function show(target) {
-    document.querySelectorAll(".screen").forEach(s => s.classList.remove("is-active"));
+  const movingWord = document.getElementById("movingWord");
+  const transitionTitle = document.getElementById("transitionTitle");
+  const transitionText = document.getElementById("transitionText");
+
+  const transitionSection = document.querySelector(".transition-scroll");
+
+  const transitionLines = document.querySelectorAll(".transition-lines i");
+
+  const metricRows = document.querySelectorAll(".metric-row");
+
+  const revealEls = document.querySelectorAll(".reveal");
+
+  function showScreen(target){
+
+    document.querySelectorAll(".screen").forEach(screen => {
+
+      screen.classList.remove("is-active");
+
+    });
+
     target.classList.add("is-active");
-    window.scrollTo(0, 0);
 
-    if (target === home) {
-      setTimeout(() => {
-        modules.forEach(m => observer.observe(m));
-        updateScroll();
-      }, 100);
+    window.scrollTo(0,0);
+
+    if(target === home){
+
+      revealEls.forEach(el => {
+
+        observer.observe(el);
+
+      });
+
     }
+
   }
 
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add("visible");
-    });
-  }, { threshold: 0.12 });
+  splashBtn.addEventListener("click", () => {
 
-  splashBtn.addEventListener("click", () => show(login));
+    showScreen(login);
+
+  });
+
   setTimeout(() => {
-    if (splash.classList.contains("is-active")) show(login);
-  }, 2600);
 
-  enterBtn.addEventListener("click", () => show(home));
+    if(splash.classList.contains("is-active")){
+
+      showScreen(login);
+
+    }
+
+  },2600);
+
+  enterBtn.addEventListener("click", () => {
+
+    showScreen(home);
+
+  });
 
   menuBtn.addEventListener("click", () => {
-    drawer.classList.add("open");
-    drawerBg.classList.add("open");
+
+    menu.classList.add("open");
+    menuBackdrop.classList.add("open");
+
   });
 
-  function closeMenu() {
-    drawer.classList.remove("open");
-    drawerBg.classList.remove("open");
+  function closeSideMenu(){
+
+    menu.classList.remove("open");
+    menuBackdrop.classList.remove("open");
+
   }
 
-  closeDrawer.addEventListener("click", closeMenu);
-  drawerBg.addEventListener("click", closeMenu);
+  closeMenu.addEventListener("click", closeSideMenu);
 
-  focusBtn.addEventListener("click", () => document.body.classList.toggle("focus"));
-  writeBtn.addEventListener("click", () => quickNote.classList.toggle("open"));
+  menuBackdrop.addEventListener("click", closeSideMenu);
 
-  jumpButtons.forEach(btn => {
-    btn.addEventListener("click", () => {
-      const el = document.getElementById(btn.dataset.jump);
-      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  focusBtn.addEventListener("click", () => {
 
-      document.querySelectorAll(".bottom-nav button").forEach(b => b.classList.remove("active"));
-      if (btn.closest(".bottom-nav")) btn.classList.add("active");
+    document.body.classList.toggle("focus");
 
-      closeMenu();
-    });
   });
 
-  function clamp(value, min, max) {
-    return Math.max(min, Math.min(max, value));
-  }
+  writeBtn.addEventListener("click", () => {
 
-  function updateScrollStage() {
-    if (!scrollStage) return;
+    writingPanel.classList.toggle("open");
 
-    const rect = scrollStage.getBoundingClientRect();
-    const stageHeight = scrollStage.offsetHeight - window.innerHeight;
-    const raw = -rect.top / stageHeight;
-    const t = clamp(raw, 0, 1);
+  });
 
-    const gap = 6 + t * 34;
-    const track = -0.04 + t * 0.26;
-    const rotate = -4 + t * 8;
-    const scale = 0.92 + t * 0.22;
+  document.querySelectorAll("[data-jump]").forEach(button => {
 
-    kineticWord.style.setProperty("--kw-gap", `${gap}px`);
-    kineticWord.style.setProperty("--kw-track", `${track}em`);
-    kineticWord.style.transform = `rotate(${rotate}deg) scale(${scale})`;
+    button.addEventListener("click", () => {
 
-    scrollLines.forEach((line, index) => {
-      const w = 20 + t * 75 - index * 12;
-      line.style.setProperty("--line-w", `${clamp(w, 8, 96)}%`);
+      const target = document.getElementById(
+        button.dataset.jump
+      );
+
+      if(target){
+
+        target.scrollIntoView({
+          behavior:"smooth",
+          block:"start"
+        });
+
+      }
+
+      document.querySelectorAll(".bottom-nav button").forEach(btn => {
+
+        btn.classList.remove("active");
+
+      });
+
+      if(button.closest(".bottom-nav")){
+
+        button.classList.add("active");
+
+      }
+
+      closeSideMenu();
+
     });
 
-    if (t < 0.33) {
-      scrollHeadline.textContent = "La palabra se abre.";
-      scrollCaption.textContent = "El splash trabaja la expansión: la identidad aparece como materia tipográfica.";
-    } else if (t < 0.66) {
-      scrollHeadline.textContent = "La letra se ordena.";
-      scrollCaption.textContent = "El login transforma esa expansión en grilla, campos y jerarquía de lectura.";
+  });
+
+  const observer = new IntersectionObserver(entries => {
+
+    entries.forEach(entry => {
+
+      if(entry.isIntersecting){
+
+        entry.target.classList.add("visible");
+
+      }
+
+    });
+
+  },{
+    threshold:.12
+  });
+
+  function clamp(value,min,max){
+
+    return Math.max(
+      min,
+      Math.min(max,value)
+    );
+
+  }
+
+  function updateTransition(){
+
+    const rect = transitionSection.getBoundingClientRect();
+
+    const total =
+      transitionSection.offsetHeight - window.innerHeight;
+
+    const progressValue =
+      clamp((-rect.top / total),0,1);
+
+    const gap =
+      8 + (progressValue * 38);
+
+    const tracking =
+      -.04 + (progressValue * .26);
+
+    const rotate =
+      -4 + (progressValue * 8);
+
+    const scale =
+      .92 + (progressValue * .24);
+
+    movingWord.style.setProperty(
+      "--word-gap",
+      `${gap}px`
+    );
+
+    movingWord.style.setProperty(
+      "--word-track",
+      `${tracking}em`
+    );
+
+    movingWord.style.transform =
+      `rotate(${rotate}deg) scale(${scale})`;
+
+    transitionLines.forEach((line,index) => {
+
+      const width =
+        24 + (progressValue * 74) - (index * 12);
+
+      line.style.setProperty(
+        "--line-width",
+        `${clamp(width,8,96)}%`
+      );
+
+    });
+
+    if(progressValue < .33){
+
+      transitionTitle.textContent =
+        "La palabra se expande.";
+
+      transitionText.textContent =
+        "El splash trabaja la expansión: la identidad aparece como materia tipográfica.";
+
+    } else if(progressValue < .66){
+
+      transitionTitle.textContent =
+        "La letra se ordena.";
+
+      transitionText.textContent =
+        "El login transforma esa expansión en grilla, campos y jerarquía.";
+
     } else {
-      scrollHeadline.textContent = "La forma se vuelve sistema.";
-      scrollCaption.textContent = "La home convierte tracking, peso y leading en información navegable.";
+
+      transitionTitle.textContent =
+        "La forma se vuelve sistema.";
+
+      transitionText.textContent =
+        "La home convierte tracking, peso y leading en información navegable.";
+
     }
+
   }
 
-  function updateScroll() {
-    if (!home.classList.contains("is-active")) return;
+  function updateScroll(){
 
-    const total = document.documentElement.scrollHeight - window.innerHeight;
-    const ratio = total > 0 ? window.scrollY / total : 0;
+    if(!home.classList.contains("is-active")) return;
 
-    progress.style.width = `${ratio * 100}%`;
+    const totalHeight =
+      document.documentElement.scrollHeight -
+      window.innerHeight;
 
-    const tracking = -0.06 + ratio * 0.22;
-    variableTitle.style.setProperty("--track", `${tracking}em`);
+    const ratio =
+      totalHeight > 0
+      ? window.scrollY / totalHeight
+      : 0;
 
-    axisRows.forEach((row, index) => {
-      const value = Math.min(95, 20 + ratio * 90 + index * 10);
-      row.style.setProperty("--axis", `${value}%`);
+    progress.style.width =
+      `${ratio * 100}%`;
+
+    const tracking =
+      -.06 + (ratio * .22);
+
+    mainTitle.style.setProperty(
+      "--tracking",
+      `${tracking}em`
+    );
+
+    metricRows.forEach((row,index) => {
+
+      const value =
+        Math.min(
+          95,
+          24 + (ratio * 90) + (index * 8)
+        );
+
+      row.style.setProperty(
+        "--metric",
+        `${value}%`
+      );
+
     });
 
-    updateScrollStage();
+    updateTransition();
+
   }
 
-  window.addEventListener("scroll", () => requestAnimationFrame(updateScroll));
-  window.addEventListener("resize", updateScroll);
+  window.addEventListener(
+    "scroll",
+    () => requestAnimationFrame(updateScroll)
+  );
+
+  window.addEventListener(
+    "resize",
+    updateScroll
+  );
+
 });
