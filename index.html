@@ -10,34 +10,44 @@
 <body>
   <main class="app">
 
+    <!-- PANTALLA 1: SPLASH SCREEN -->
     <section class="screen splash active" id="splash">
-      <div class="bg-grid"></div>
+      <div class="background-grid"></div>
 
-      <button class="splash-logo" id="splashBtn" type="button">
-        <span>K</span>
+      <div class="splash-typographic-field" aria-hidden="true">
+        <span>TRACKING</span>
+        <span>WEIGHT</span>
+        <span>LEADING</span>
+        <span>KERNING</span>
+      </div>
+
+      <button class="splash-brand" id="splashBtn" type="button" aria-label="Ingresar a KERNN">
+        <div class="splash-mark">K</div>
         <h1>KERNN</h1>
-        <p>Journaling tipográfico emocional</p>
+        <p>El espejo tipográfico de tu mente.</p>
       </button>
 
-      <div class="splash-meta">
-        <span>Tracking</span>
-        <span>Weight</span>
-        <span>Leading</span>
+      <div class="splash-bottom">
+        <span>01</span>
+        <span>Journaling emocional</span>
+        <span>OS</span>
       </div>
     </section>
 
+    <!-- PANTALLA 2: LOGIN -->
     <section class="screen login" id="login">
-      <div class="bg-grid"></div>
+      <div class="background-grid"></div>
 
-      <div class="login-brand">
+      <div class="login-identity">
+        <span class="system-number">02</span>
         <h1>KERNN</h1>
-        <p>El espejo de tu mente.</p>
+        <p>La escritura se ordena en sistema.</p>
       </div>
 
       <section class="login-card">
         <span class="label dark">Acceso privado</span>
         <h2>Iniciar sesión</h2>
-        <p>Entrá a tu sistema de escritura, señales y reflexión.</p>
+        <p>Ingresá para continuar con tu registro emocional y tipográfico.</p>
 
         <label for="email">Correo</label>
         <div class="input-box">
@@ -65,9 +75,10 @@
       </section>
     </section>
 
+    <!-- PANTALLA 3: HOME -->
     <section class="screen home" id="home">
-      <div class="bg-grid"></div>
-      <div class="progress" id="progress"></div>
+      <div class="background-grid"></div>
+      <div class="scroll-progress" id="scrollProgress"></div>
 
       <header class="home-header">
         <button class="hamburger" type="button" aria-label="Menú">
@@ -76,22 +87,24 @@
 
         <h1>KERNN OS</h1>
 
-        <div class="header-icons">
+        <div class="header-actions">
           <button type="button" aria-label="Buscar">⌕</button>
           <button type="button" aria-label="Perfil">◌</button>
         </div>
       </header>
 
-      <section class="hero reveal">
-        <div>
-          <span class="label dark">Ritual activo</span>
-          <h2>Comienza<br>a escribir</h2>
-          <p>Transformá tu estado de ánimo en señales tipográficas.</p>
-        </div>
+      <section class="home-intro reveal">
+        <span class="label dark">Ritual activo</span>
+        <div class="home-intro-content">
+          <div>
+            <h2>Comienza<br>a escribir</h2>
+            <p>Transformá tu estado de ánimo en señales tipográficas: tracking, peso, ritmo y densidad.</p>
+          </div>
 
-        <button class="write-btn" type="button">
-          <i></i>
-        </button>
+          <button class="write-button" type="button" aria-label="Comenzar escritura">
+            <i></i>
+          </button>
+        </div>
       </section>
 
       <section class="dashboard">
@@ -118,15 +131,17 @@
         </article>
 
         <article class="card light-card reveal">
-          <span class="label dark">Configuración</span>
-          <div class="option"><b>+</b><p>Calibración de Ejes</p></div>
-          <div class="option"><b>▤</b><p>Paleta Visual</p></div>
+          <span class="label dark">Sistema</span>
+          <div class="option"><b>+</b><p>Calibración de ejes</p></div>
+          <div class="option"><b>▤</b><p>Paleta visual</p></div>
         </article>
 
         <article class="card dark-card wide reveal">
           <span class="label">Habit tracker emocional</span>
           <div class="legend">
-            <p>Duda</p><p>Claridad</p><p>Intensidad</p>
+            <p>Duda</p>
+            <p>Claridad</p>
+            <p>Intensidad</p>
           </div>
           <div class="bars">
             <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
@@ -134,10 +149,11 @@
         </article>
       </section>
 
-      <section class="analysis">
+      <section class="scroll-section">
         <div class="section-title reveal">
-          <span>Sistema de lectura</span>
+          <span>Continuidad vertical</span>
           <h2>Historial y análisis</h2>
+          <p>La identidad tipográfica se convierte en sistema de lectura, navegación y datos.</p>
         </div>
 
         <section class="dashboard">
@@ -179,8 +195,8 @@
 
           <article class="card light-card reveal">
             <span class="label dark">Gestión de datos</span>
-            <div class="option"><b>✓</b><p>Exportar Historial</p></div>
-            <div class="option"><b>×</b><p>Eliminar Entradas</p></div>
+            <div class="option"><b>✓</b><p>Exportar historial</p></div>
+            <div class="option"><b>×</b><p>Eliminar entradas</p></div>
           </article>
         </section>
       </section>

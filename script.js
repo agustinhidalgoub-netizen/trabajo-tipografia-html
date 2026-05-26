@@ -2,22 +2,24 @@ document.addEventListener("DOMContentLoaded", () => {
   const splash = document.getElementById("splash");
   const login = document.getElementById("login");
   const home = document.getElementById("home");
+
   const splashBtn = document.getElementById("splashBtn");
   const enterBtn = document.getElementById("enterBtn");
-  const progress = document.getElementById("progress");
+  const scrollProgress = document.getElementById("scrollProgress");
+
   const revealElements = document.querySelectorAll(".reveal");
 
-  function showPanel(panel) {
+  function showScreen(target) {
     document.querySelectorAll(".screen").forEach(screen => {
       screen.classList.remove("active");
     });
 
-    panel.classList.add("active");
+    target.classList.add("active");
     window.scrollTo(0, 0);
 
-    if (panel === home) {
+    if (target === home) {
       setTimeout(() => {
-        revealElements.forEach(item => observer.observe(item));
+        revealElements.forEach(element => observer.observe(element));
       }, 100);
     }
   }
@@ -30,20 +32,26 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }, { threshold: 0.12 });
 
-  splashBtn.addEventListener("click", () => showPanel(login));
-  enterBtn.addEventListener("click", () => showPanel(home));
+  splashBtn.addEventListener("click", () => {
+    showScreen(login);
+  });
 
   setTimeout(() => {
     if (splash.classList.contains("active")) {
-      showPanel(login);
+      showScreen(login);
     }
   }, 2400);
+
+  enterBtn.addEventListener("click", () => {
+    showScreen(home);
+  });
 
   window.addEventListener("scroll", () => {
     if (!home.classList.contains("active")) return;
 
-    const max = document.documentElement.scrollHeight - window.innerHeight;
-    const value = max > 0 ? (window.scrollY / max) * 100 : 0;
-    progress.style.width = `${value}%`;
+    const total = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = total > 0 ? (window.scrollY / total) * 100 : 0;
+
+    scrollProgress.style.width = `${progress}%`;
   });
 });
