@@ -17,10 +17,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const focusMode = document.getElementById("focusMode");
 
   const revealElements = document.querySelectorAll(".reveal");
+  const motionElements = document.querySelectorAll(".scroll-motion");
   const expandableCards = document.querySelectorAll(".expandable");
   const navButtons = document.querySelectorAll("[data-target]");
   const chartBars = document.querySelectorAll(".bars i");
   const chartCaption = document.getElementById("chartCaption");
+
+  const scrollWords = document.querySelectorAll(".scroll-word");
 
   const captions = {
     Lun: "Lunes: escritura contenida, tracking estable.",
@@ -31,6 +34,8 @@ document.addEventListener("DOMContentLoaded", () => {
     Sáb: "Sábado: registro medio, tono introspectivo.",
     Dom: "Domingo: cierre de semana con alta estabilidad."
   };
+
+  let ticking = false;
 
   function showScreen(target) {
     document.querySelectorAll(".screen").forEach(screen => {
@@ -43,6 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (target === home) {
       setTimeout(() => {
         revealElements.forEach(element => observer.observe(element));
+        updateScrollMotion();
       }, 100);
     }
   }
@@ -55,9 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }, { threshold: 0.12 });
 
-  splashBtn.addEventListener("click", () => {
-    showScreen(login);
-  });
+  splashBtn.addEventListener("click", () => showScreen(login));
 
   setTimeout(() => {
     if (splash.classList.contains("active")) {
@@ -65,9 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }, 2400);
 
-  enterBtn.addEventListener("click", () => {
-    showScreen(home);
-  });
+  enterBtn.addEventListener("click", () => showScreen(home));
 
   function openSideMenu() {
     sideMenu.classList.add("open");
@@ -132,12 +134,27 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  window.addEventListener("scroll", () => {
+  function updateScrollMotion() {
     if (!home.classList.contains("active")) return;
 
+    const scrollY = window.scrollY;
     const total = document.documentElement.scrollHeight - window.innerHeight;
-    const progress = total > 0 ? (window.scrollY / total) * 100 : 0;
-    scrollProgress.style.width = `${progress}%`;
+    const progress = total > 0 ? scrollY / total : 0;
+
+    scrollProgress.style.width = `${progress * 100}%`;
+
+    motionElements.forEach(element => {
+      const rect = element.getBoundingClientRect();
+      const speed = Number(element.dataset.speed || 0);
+      const movement = rect.top * speed;
+      element.style.transform = `translateY(${movement}px)`;
+    });
+
+    scrollWords.forEach((word, index) => {
+      const direction = index % 2 === 0 ? 1 : -1;
+      const movement = scrollY * 0.18 * direction;
+      word.style.transform = `translateX(${movement}px) rotate(${index === 1 ? 90 : 0}deg)`;
+    });
 
     revealElements.forEach(element => {
       const rect = element.getBoundingClientRect();
@@ -147,5 +164,16 @@ document.addEventListener("DOMContentLoaded", () => {
         element.classList.remove("passed");
       }
     });
+
+    ticking = false;
+  }
+
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      window.requestAnimationFrame(updateScrollMotion);
+      ticking = true;
+    }
   });
+
+  window.addEventListener("resize", updateScrollMotion);
 });

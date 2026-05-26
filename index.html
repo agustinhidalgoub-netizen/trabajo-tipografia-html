@@ -10,18 +10,17 @@
 <body>
   <main class="app">
 
-    <!-- SPLASH -->
     <section class="screen splash active" id="splash">
       <div class="background-grid"></div>
 
-      <div class="splash-typographic-field" aria-hidden="true">
+      <div class="splash-typographic-field">
         <span>TRACKING</span>
         <span>WEIGHT</span>
         <span>LEADING</span>
         <span>KERNING</span>
       </div>
 
-      <button class="splash-brand" id="splashBtn" type="button" aria-label="Ingresar a KERNN">
+      <button class="splash-brand" id="splashBtn" type="button">
         <div class="splash-mark">K</div>
         <h1>KERNN</h1>
         <p>El espejo tipográfico de tu mente.</p>
@@ -34,7 +33,6 @@
       </div>
     </section>
 
-    <!-- LOGIN -->
     <section class="screen login" id="login">
       <div class="background-grid"></div>
 
@@ -75,12 +73,16 @@
       </section>
     </section>
 
-    <!-- HOME -->
     <section class="screen home" id="home">
       <div class="background-grid"></div>
       <div class="scroll-progress" id="scrollProgress"></div>
 
-      <!-- MENÚ DESPLEGABLE -->
+      <div class="scroll-type-layer" aria-hidden="true">
+        <span class="scroll-word word-one">TRACKING</span>
+        <span class="scroll-word word-two">WEIGHT</span>
+        <span class="scroll-word word-three">LEADING</span>
+      </div>
+
       <aside class="side-menu" id="sideMenu">
         <div class="side-menu-top">
           <span>KERNN OS</span>
@@ -110,12 +112,12 @@
         <h1>KERNN OS</h1>
 
         <div class="header-actions">
-          <button type="button" id="focusMode" aria-label="Modo foco">◎</button>
-          <button type="button" aria-label="Perfil">◌</button>
+          <button type="button" id="focusMode">◎</button>
+          <button type="button">◌</button>
         </div>
       </header>
 
-      <section class="home-intro reveal" id="top">
+      <section class="home-intro reveal scroll-motion" id="top" data-speed="-0.08">
         <span class="label dark">Ritual activo</span>
 
         <div class="home-intro-content">
@@ -124,7 +126,7 @@
             <p>Transformá tu estado de ánimo en señales tipográficas: tracking, peso, ritmo y densidad.</p>
           </div>
 
-          <button class="write-button" id="writeButton" type="button" aria-label="Comenzar escritura">
+          <button class="write-button" id="writeButton" type="button">
             <i></i>
           </button>
         </div>
@@ -135,8 +137,14 @@
         </div>
       </section>
 
+      <section class="motion-strip">
+        <span>TRACKING +0.02</span>
+        <span>WEIGHT 410</span>
+        <span>LEADING 1.30</span>
+      </section>
+
       <section class="dashboard" id="actividad">
-        <article class="card dark-card reveal expandable">
+        <article class="card dark-card reveal expandable scroll-motion" data-speed="0.06">
           <span class="label">Tus señales hoy</span>
           <div class="metric"><p>Tracking</p><b>+0.02</b></div>
           <div class="metric"><p>Weight</p><b>410</b></div>
@@ -146,7 +154,7 @@
           </div>
         </article>
 
-        <article class="card light-card reveal expandable">
+        <article class="card light-card reveal expandable scroll-motion" data-speed="-0.04">
           <span class="label dark">Últimas entradas</span>
           <h3>Entrada del Lunes <small>14:30</small></h3>
           <em>No sé muy bien...<br>(tracking expanded)</em>
@@ -158,7 +166,7 @@
           </div>
         </article>
 
-        <article class="card dark-card reveal expandable">
+        <article class="card dark-card reveal expandable scroll-motion" data-speed="-0.03">
           <span class="label">Núcleo de reflexión</span>
           <p>Reflexión del día</p>
           <h2>¿Cómo resuenan tus silencios?</h2>
@@ -167,16 +175,16 @@
           </div>
         </article>
 
-        <article class="card light-card reveal expandable" id="sistema">
+        <article class="card light-card reveal expandable scroll-motion" id="sistema" data-speed="0.05">
           <span class="label dark">Sistema</span>
           <div class="option"><b>+</b><p>Calibración de ejes</p></div>
           <div class="option"><b>▤</b><p>Paleta visual</p></div>
           <div class="card-detail">
-            <p>Los ejes tipográficos permiten traducir estados emocionales a variables visuales.</p>
+            <p>Los ejes tipográficos traducen estados emocionales a variables visuales.</p>
           </div>
         </article>
 
-        <article class="card dark-card wide reveal interactive-chart">
+        <article class="card dark-card wide reveal interactive-chart scroll-motion" data-speed="0.04">
           <span class="label">Habit tracker emocional</span>
           <div class="legend">
             <p>Duda</p>
@@ -191,46 +199,46 @@
       </section>
 
       <section class="scroll-section" id="analisis">
-        <div class="section-title reveal">
+        <div class="section-title reveal scroll-motion" data-speed="-0.05">
           <span>Continuidad vertical</span>
           <h2>Historial y análisis</h2>
           <p>La identidad tipográfica se convierte en sistema de lectura, navegación y datos.</p>
         </div>
 
         <section class="dashboard">
-          <article class="card dark-card reveal expandable">
+          <article class="card dark-card reveal expandable scroll-motion" data-speed="0.05">
             <span class="label">Resumen mensual</span>
             <div class="metric"><p>Total entradas</p><b>24</b></div>
             <div class="metric"><p>Días activos</p><b>19/30</b></div>
             <div class="metric"><p>Palabras</p><b>5.600</b></div>
             <div class="metric"><p>Velocidad</p><b>42 ppm</b></div>
             <div class="card-detail">
-              <p>El mes muestra continuidad media-alta y escritura más clara hacia el final del período.</p>
+              <p>El mes muestra continuidad media-alta y escritura más clara hacia el final.</p>
             </div>
           </article>
 
-          <article class="card light-card featured reveal expandable">
+          <article class="card light-card featured reveal expandable scroll-motion" data-speed="-0.04">
             <span class="label dark">Reflexión destacada</span>
             <h3>Entrada del Jueves</h3>
             <h2>¿Cuál es la forma de mi miedo hoy?</h2>
             <button type="button">Ver más reflexiones</button>
             <div class="card-detail">
-              <p>La app propone preguntas cuando detecta patrones de repetición o tensión tipográfica.</p>
+              <p>La app propone preguntas cuando detecta repetición o tensión tipográfica.</p>
             </div>
           </article>
 
-          <article class="card light-card reveal expandable">
+          <article class="card light-card reveal expandable scroll-motion" data-speed="0.04">
             <span class="label dark">Patrones tipográficos</span>
             <div class="metric light-line"><p>[–] Caos</p><b>12%</b></div>
             <div class="metric light-line"><p>[=] Claridad</p><b>65%</b></div>
             <div class="metric light-line"><p>[+] Intensidad</p><b>23%</b></div>
             <strong>Mayoría de escritura clara y estable.</strong>
             <div class="card-detail">
-              <p>El peso tipográfico bajo y el ritmo regular se asocian a estados de claridad.</p>
+              <p>El peso bajo y el ritmo regular se asocian a estados de claridad.</p>
             </div>
           </article>
 
-          <article class="card dark-card reveal expandable">
+          <article class="card dark-card reveal expandable scroll-motion" data-speed="-0.03">
             <span class="label">Insight de KERNN</span>
             <p>Sugerencia de práctica</p>
             <h2>Explorá la duda sin expandir el tracking.</h2>
@@ -239,7 +247,7 @@
             </div>
           </article>
 
-          <article class="card dark-card reveal expandable">
+          <article class="card dark-card reveal expandable scroll-motion" data-speed="0.05">
             <span class="label">Objetivos de ritual</span>
             <div class="metric"><p>Meta de Mayo</p><b>25 entradas</b></div>
             <div class="metric"><p>Actual</p><b>2/25</b></div>
@@ -249,7 +257,7 @@
             </div>
           </article>
 
-          <article class="card light-card reveal expandable">
+          <article class="card light-card reveal expandable scroll-motion" data-speed="-0.04">
             <span class="label dark">Gestión de datos</span>
             <div class="option"><b>✓</b><p>Exportar historial</p></div>
             <div class="option"><b>×</b><p>Eliminar entradas</p></div>

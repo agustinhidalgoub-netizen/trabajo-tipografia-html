@@ -376,7 +376,7 @@ label {
 /* HOME */
 
 .home {
-  min-height: 240vh;
+  min-height: 260vh;
   padding: 0 5.6vw 124px;
 }
 
@@ -388,6 +388,42 @@ label {
   width: 0;
   height: 4px;
   background: linear-gradient(90deg, var(--cream), var(--red));
+}
+
+.scroll-type-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.scroll-word {
+  position: absolute;
+  color: rgba(247,234,217,.045);
+  font-weight: 900;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  will-change: transform;
+}
+
+.word-one {
+  top: 18%;
+  left: -18%;
+  font-size: clamp(48px, 16vw, 180px);
+}
+
+.word-two {
+  top: 52%;
+  right: -22%;
+  font-size: clamp(42px, 14vw, 160px);
+  transform: rotate(90deg);
+}
+
+.word-three {
+  bottom: 10%;
+  left: 8%;
+  font-size: clamp(38px, 12vw, 150px);
 }
 
 /* HEADER */
@@ -651,6 +687,33 @@ label {
   outline: none;
 }
 
+/* STRIP */
+
+.motion-strip {
+  position: relative;
+  z-index: 3;
+  margin: 0 -5.6vw clamp(24px, 6vw, 54px);
+  padding: 12px 0;
+  display: flex;
+  gap: 24px;
+  overflow: hidden;
+  color: rgba(247,234,217,.5);
+  font-size: clamp(12px, 3vw, 28px);
+  font-weight: 900;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.motion-strip span {
+  animation: ticker 10s linear infinite;
+}
+
+@keyframes ticker {
+  from { transform: translateX(80vw); }
+  to { transform: translateX(-120vw); }
+}
+
 /* CARDS */
 
 .dashboard {
@@ -671,6 +734,7 @@ label {
   overflow: hidden;
   box-shadow: 0 24px 64px rgba(0,0,0,.26);
   transition: transform .28s ease, box-shadow .28s ease;
+  will-change: transform;
 }
 
 .card:active {
@@ -982,7 +1046,11 @@ label {
 }
 
 .reveal.passed {
-  transform: translateY(-8px);
+  opacity: .72;
+}
+
+.scroll-motion {
+  will-change: transform;
 }
 
 @media (min-width: 760px) {
