@@ -16,8 +16,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const variableTitle = document.getElementById("variableTitle");
   const axisRows = document.querySelectorAll(".axis-row");
-  const modules = document.querySelectorAll(".module, .reveal");
+  const modules = document.querySelectorAll(".module");
   const jumpButtons = document.querySelectorAll("[data-jump]");
+  const scrollStage = document.querySelector(".scroll-stage");
+  const kineticWord = document.getElementById("kineticWord");
+  const scrollHeadline = document.getElementById("scrollHeadline");
+  const scrollCaption = document.getElementById("scrollCaption");
+  const scrollLines = document.querySelectorAll(".scroll-lines i");
 
   function show(target) {
     document.querySelectorAll(".screen").forEach(s => s.classList.remove("is-active"));
@@ -36,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
     entries.forEach(entry => {
       if (entry.isIntersecting) entry.target.classList.add("visible");
     });
-  }, { threshold: 0.15 });
+  }, { threshold: 0.12 });
 
   splashBtn.addEventListener("click", () => show(login));
   setTimeout(() => {
@@ -73,12 +78,43 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  document.querySelectorAll(".reading-card, .card").forEach(card => {
-    card.addEventListener("click", e => {
-      if (e.target.closest("button")) return;
-      card.classList.toggle("expanded");
+  function clamp(value, min, max) {
+    return Math.max(min, Math.min(max, value));
+  }
+
+  function updateScrollStage() {
+    if (!scrollStage) return;
+
+    const rect = scrollStage.getBoundingClientRect();
+    const stageHeight = scrollStage.offsetHeight - window.innerHeight;
+    const raw = -rect.top / stageHeight;
+    const t = clamp(raw, 0, 1);
+
+    const gap = 6 + t * 34;
+    const track = -0.04 + t * 0.26;
+    const rotate = -4 + t * 8;
+    const scale = 0.92 + t * 0.22;
+
+    kineticWord.style.setProperty("--kw-gap", `${gap}px`);
+    kineticWord.style.setProperty("--kw-track", `${track}em`);
+    kineticWord.style.transform = `rotate(${rotate}deg) scale(${scale})`;
+
+    scrollLines.forEach((line, index) => {
+      const w = 20 + t * 75 - index * 12;
+      line.style.setProperty("--line-w", `${clamp(w, 8, 96)}%`);
     });
-  });
+
+    if (t < 0.33) {
+      scrollHeadline.textContent = "La palabra se abre.";
+      scrollCaption.textContent = "El splash trabaja la expansión: la identidad aparece como materia tipográfica.";
+    } else if (t < 0.66) {
+      scrollHeadline.textContent = "La letra se ordena.";
+      scrollCaption.textContent = "El login transforma esa expansión en grilla, campos y jerarquía de lectura.";
+    } else {
+      scrollHeadline.textContent = "La forma se vuelve sistema.";
+      scrollCaption.textContent = "La home convierte tracking, peso y leading en información navegable.";
+    }
+  }
 
   function updateScroll() {
     if (!home.classList.contains("is-active")) return;
@@ -88,21 +124,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     progress.style.width = `${ratio * 100}%`;
 
-    const tracking = -0.06 + ratio * 0.18;
+    const tracking = -0.06 + ratio * 0.22;
     variableTitle.style.setProperty("--track", `${tracking}em`);
 
     axisRows.forEach((row, index) => {
-      const value = Math.min(95, 28 + ratio * 70 + index * 8);
+      const value = Math.min(95, 20 + ratio * 90 + index * 10);
       row.style.setProperty("--axis", `${value}%`);
     });
 
-    modules.forEach((el, index) => {
-      const rect = el.getBoundingClientRect();
-      const movement = rect.top * (index % 2 === 0 ? -0.025 : 0.025);
-      if (rect.top < window.innerHeight && rect.bottom > 0) {
-        el.style.transform = `translateY(${movement}px)`;
-      }
-    });
+    updateScrollStage();
   }
 
   window.addEventListener("scroll", () => requestAnimationFrame(updateScroll));
