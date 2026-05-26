@@ -28,6 +28,16 @@ body {
   overflow-x: hidden;
 }
 
+body.focus-mode .card:not(.featured),
+body.focus-mode .background-grid {
+  opacity: .45;
+}
+
+body.focus-mode .featured,
+body.focus-mode .home-intro {
+  box-shadow: 0 0 0 3px rgba(247,234,217,.24), 0 38px 100px rgba(0,0,0,.45);
+}
+
 button,
 input {
   font-family: inherit;
@@ -71,6 +81,7 @@ button {
     linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px),
     linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px);
   background-size: 28px 28px;
+  transition: opacity .4s ease;
 }
 
 .label {
@@ -127,27 +138,10 @@ button {
   text-transform: uppercase;
 }
 
-.splash-typographic-field span:nth-child(1) {
-  top: 18%;
-  left: 8%;
-}
-
-.splash-typographic-field span:nth-child(2) {
-  top: 32%;
-  right: -6%;
-  transform: rotate(90deg);
-}
-
-.splash-typographic-field span:nth-child(3) {
-  bottom: 24%;
-  left: -8%;
-  transform: rotate(-90deg);
-}
-
-.splash-typographic-field span:nth-child(4) {
-  bottom: 15%;
-  right: 8%;
-}
+.splash-typographic-field span:nth-child(1) { top: 18%; left: 8%; }
+.splash-typographic-field span:nth-child(2) { top: 32%; right: -6%; transform: rotate(90deg); }
+.splash-typographic-field span:nth-child(3) { bottom: 24%; left: -8%; transform: rotate(-90deg); }
+.splash-typographic-field span:nth-child(4) { bottom: 15%; right: 8%; }
 
 .splash-brand {
   position: relative;
@@ -185,7 +179,6 @@ button {
   color: var(--dark);
   font-size: clamp(46px, 10vw, 106px);
   font-weight: 900;
-  box-shadow: 0 22px 54px rgba(0,0,0,.34);
 }
 
 .splash-brand h1 {
@@ -383,19 +376,21 @@ label {
 /* HOME */
 
 .home {
-  min-height: 230vh;
-  padding: 0 5.6vw 120px;
+  min-height: 240vh;
+  padding: 0 5.6vw 124px;
 }
 
 .scroll-progress {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 100;
+  z-index: 120;
   width: 0;
   height: 4px;
   background: linear-gradient(90deg, var(--cream), var(--red));
 }
+
+/* HEADER */
 
 .home-header {
   position: sticky;
@@ -449,6 +444,105 @@ label {
   color: var(--dark);
   font-size: 30px;
 }
+
+/* SIDE MENU */
+
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 140;
+  width: min(82vw, 420px);
+  height: 100vh;
+  padding: 28px;
+  background: rgba(255,248,237,.98);
+  color: var(--dark);
+  transform: translateX(-105%);
+  transition: transform .45s cubic-bezier(.19,1,.22,1);
+  box-shadow: 28px 0 90px rgba(0,0,0,.35);
+}
+
+.side-menu.open {
+  transform: translateX(0);
+}
+
+.side-menu-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 46px;
+}
+
+.side-menu-top span {
+  font-weight: 900;
+  letter-spacing: .16em;
+}
+
+.side-menu-top button {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--dark);
+  color: var(--cream);
+  font-size: 30px;
+}
+
+.side-menu nav {
+  display: grid;
+  gap: 16px;
+}
+
+.side-menu nav button {
+  padding: 18px;
+  border-radius: 18px;
+  background: rgba(19,3,5,.07);
+  color: var(--dark);
+  text-align: left;
+  font-size: 18px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+.side-menu-note {
+  position: absolute;
+  left: 28px;
+  right: 28px;
+  bottom: 32px;
+  padding: 22px;
+  border-radius: 24px;
+  background: var(--dark);
+  color: var(--cream);
+}
+
+.side-menu-note p {
+  margin: 0 0 8px;
+  color: var(--muted);
+}
+
+.side-menu-note strong {
+  font-family: var(--serif);
+  font-size: 26px;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.menu-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 130;
+  background: rgba(0,0,0,.45);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .35s ease;
+}
+
+.menu-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* INTRO */
 
 .home-intro {
   position: relative;
@@ -523,6 +617,42 @@ label {
   50% { opacity: .25; }
 }
 
+.writing-panel {
+  position: relative;
+  z-index: 3;
+  max-height: 0;
+  margin-top: 0;
+  overflow: hidden;
+  transition: max-height .5s cubic-bezier(.19,1,.22,1), margin-top .4s ease;
+}
+
+.writing-panel.open {
+  max-height: 220px;
+  margin-top: 24px;
+}
+
+.writing-panel span {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--muted-dark);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  font-weight: 900;
+}
+
+.writing-panel p {
+  max-width: 100%;
+  min-height: 110px;
+  padding: 18px;
+  border-radius: 22px;
+  background: rgba(255,255,255,.45);
+  color: var(--dark);
+  outline: none;
+}
+
+/* CARDS */
+
 .dashboard {
   position: relative;
   z-index: 2;
@@ -540,6 +670,15 @@ label {
   border-radius: clamp(24px, 5vw, 42px);
   overflow: hidden;
   box-shadow: 0 24px 64px rgba(0,0,0,.26);
+  transition: transform .28s ease, box-shadow .28s ease;
+}
+
+.card:active {
+  transform: scale(.98);
+}
+
+.card.expanded {
+  grid-column: 1 / -1;
 }
 
 .dark-card {
@@ -604,6 +743,19 @@ label {
   margin: 18px 0;
   border: 0;
   border-top: 2px solid rgba(23,4,7,.13);
+}
+
+.card-detail {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height .4s ease, opacity .35s ease, margin-top .35s ease;
+}
+
+.card.expanded .card-detail {
+  max-height: 180px;
+  opacity: 1;
+  margin-top: 18px;
 }
 
 .metric {
@@ -699,6 +851,11 @@ label {
   animation: barMove 2.6s ease-in-out infinite alternate;
 }
 
+.bars i.active {
+  background: linear-gradient(180deg, var(--red), var(--cream));
+  transform: scaleY(1.2);
+}
+
 .bars i:nth-child(1) { height: 42%; opacity: .45; }
 .bars i:nth-child(2) { height: 62%; opacity: .75; animation-delay: .16s; }
 .bars i:nth-child(3) { height: 36%; opacity: .55; animation-delay: .32s; }
@@ -710,6 +867,15 @@ label {
 @keyframes barMove {
   to { transform: scaleY(1.12); }
 }
+
+.interactive-chart small {
+  display: block;
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* SECTION */
 
 .scroll-section {
   margin-top: clamp(70px, 16vw, 180px);
@@ -802,13 +968,29 @@ label {
   color: var(--wine-2);
 }
 
+/* REVEAL + SCROLL MOTION */
+
 .reveal {
   opacity: 0;
-  transform: translateY(40px);
+  transform: translateY(44px);
   transition: opacity .65s ease, transform .65s ease;
 }
 
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+.reveal.passed {
+  transform: translateY(-8px);
+}
+
+@media (min-width: 760px) {
+  .bottom-nav button p {
+    font-size: 22px;
+  }
+
+  .bottom-nav button span {
+    font-size: 42px;
+  }
 }

@@ -10,7 +10,7 @@
 <body>
   <main class="app">
 
-    <!-- PANTALLA 1: SPLASH SCREEN -->
+    <!-- SPLASH -->
     <section class="screen splash active" id="splash">
       <div class="background-grid"></div>
 
@@ -34,7 +34,7 @@
       </div>
     </section>
 
-    <!-- PANTALLA 2: LOGIN -->
+    <!-- LOGIN -->
     <section class="screen login" id="login">
       <div class="background-grid"></div>
 
@@ -75,68 +75,108 @@
       </section>
     </section>
 
-    <!-- PANTALLA 3: HOME -->
+    <!-- HOME -->
     <section class="screen home" id="home">
       <div class="background-grid"></div>
       <div class="scroll-progress" id="scrollProgress"></div>
 
+      <!-- MENÚ DESPLEGABLE -->
+      <aside class="side-menu" id="sideMenu">
+        <div class="side-menu-top">
+          <span>KERNN OS</span>
+          <button id="closeMenu" type="button">×</button>
+        </div>
+
+        <nav>
+          <button type="button" data-target="top">Inicio</button>
+          <button type="button" data-target="actividad">Actividad</button>
+          <button type="button" data-target="analisis">Análisis</button>
+          <button type="button" data-target="sistema">Sistema</button>
+        </nav>
+
+        <div class="side-menu-note">
+          <p>Tracking emocional</p>
+          <strong>La forma de tu escritura revela patrones internos.</strong>
+        </div>
+      </aside>
+
+      <div class="menu-backdrop" id="menuBackdrop"></div>
+
       <header class="home-header">
-        <button class="hamburger" type="button" aria-label="Menú">
+        <button class="hamburger" id="openMenu" type="button" aria-label="Menú">
           <i></i><i></i><i></i>
         </button>
 
         <h1>KERNN OS</h1>
 
         <div class="header-actions">
-          <button type="button" aria-label="Buscar">⌕</button>
+          <button type="button" id="focusMode" aria-label="Modo foco">◎</button>
           <button type="button" aria-label="Perfil">◌</button>
         </div>
       </header>
 
-      <section class="home-intro reveal">
+      <section class="home-intro reveal" id="top">
         <span class="label dark">Ritual activo</span>
+
         <div class="home-intro-content">
           <div>
             <h2>Comienza<br>a escribir</h2>
             <p>Transformá tu estado de ánimo en señales tipográficas: tracking, peso, ritmo y densidad.</p>
           </div>
 
-          <button class="write-button" type="button" aria-label="Comenzar escritura">
+          <button class="write-button" id="writeButton" type="button" aria-label="Comenzar escritura">
             <i></i>
           </button>
         </div>
+
+        <div class="writing-panel" id="writingPanel">
+          <span>Entrada rápida</span>
+          <p contenteditable="true">Hoy escribo para observar cómo cambia mi ritmo interno...</p>
+        </div>
       </section>
 
-      <section class="dashboard">
-        <article class="card dark-card reveal">
+      <section class="dashboard" id="actividad">
+        <article class="card dark-card reveal expandable">
           <span class="label">Tus señales hoy</span>
           <div class="metric"><p>Tracking</p><b>+0.02</b></div>
           <div class="metric"><p>Weight</p><b>410</b></div>
           <div class="metric"><p>Leading</p><b>1.30</b></div>
+          <div class="card-detail">
+            <p>El sistema detecta escritura estable con leve expansión del espaciado.</p>
+          </div>
         </article>
 
-        <article class="card light-card reveal">
+        <article class="card light-card reveal expandable">
           <span class="label dark">Últimas entradas</span>
           <h3>Entrada del Lunes <small>14:30</small></h3>
           <em>No sé muy bien...<br>(tracking expanded)</em>
           <hr>
           <h3>Entrada del Domingo <small>09:15</small></h3>
           <strong>Claridad absoluta.</strong>
+          <div class="card-detail">
+            <p>La entrada del lunes presenta más dudas y mayor tensión entre líneas.</p>
+          </div>
         </article>
 
-        <article class="card dark-card reveal">
+        <article class="card dark-card reveal expandable">
           <span class="label">Núcleo de reflexión</span>
           <p>Reflexión del día</p>
           <h2>¿Cómo resuenan tus silencios?</h2>
+          <div class="card-detail">
+            <p>Esta pregunta se activa cuando el registro baja en intensidad pero aumenta en repetición.</p>
+          </div>
         </article>
 
-        <article class="card light-card reveal">
+        <article class="card light-card reveal expandable" id="sistema">
           <span class="label dark">Sistema</span>
           <div class="option"><b>+</b><p>Calibración de ejes</p></div>
           <div class="option"><b>▤</b><p>Paleta visual</p></div>
+          <div class="card-detail">
+            <p>Los ejes tipográficos permiten traducir estados emocionales a variables visuales.</p>
+          </div>
         </article>
 
-        <article class="card dark-card wide reveal">
+        <article class="card dark-card wide reveal interactive-chart">
           <span class="label">Habit tracker emocional</span>
           <div class="legend">
             <p>Duda</p>
@@ -144,12 +184,13 @@
             <p>Intensidad</p>
           </div>
           <div class="bars">
-            <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+            <i data-day="Lun"></i><i data-day="Mar"></i><i data-day="Mié"></i><i data-day="Jue"></i><i data-day="Vie"></i><i data-day="Sáb"></i><i data-day="Dom"></i>
           </div>
+          <small id="chartCaption">Tocá una barra para leer el pulso emocional del día.</small>
         </article>
       </section>
 
-      <section class="scroll-section">
+      <section class="scroll-section" id="analisis">
         <div class="section-title reveal">
           <span>Continuidad vertical</span>
           <h2>Historial y análisis</h2>
@@ -157,62 +198,80 @@
         </div>
 
         <section class="dashboard">
-          <article class="card dark-card reveal">
+          <article class="card dark-card reveal expandable">
             <span class="label">Resumen mensual</span>
             <div class="metric"><p>Total entradas</p><b>24</b></div>
             <div class="metric"><p>Días activos</p><b>19/30</b></div>
             <div class="metric"><p>Palabras</p><b>5.600</b></div>
             <div class="metric"><p>Velocidad</p><b>42 ppm</b></div>
+            <div class="card-detail">
+              <p>El mes muestra continuidad media-alta y escritura más clara hacia el final del período.</p>
+            </div>
           </article>
 
-          <article class="card light-card featured reveal">
+          <article class="card light-card featured reveal expandable">
             <span class="label dark">Reflexión destacada</span>
             <h3>Entrada del Jueves</h3>
             <h2>¿Cuál es la forma de mi miedo hoy?</h2>
             <button type="button">Ver más reflexiones</button>
+            <div class="card-detail">
+              <p>La app propone preguntas cuando detecta patrones de repetición o tensión tipográfica.</p>
+            </div>
           </article>
 
-          <article class="card light-card reveal">
+          <article class="card light-card reveal expandable">
             <span class="label dark">Patrones tipográficos</span>
             <div class="metric light-line"><p>[–] Caos</p><b>12%</b></div>
             <div class="metric light-line"><p>[=] Claridad</p><b>65%</b></div>
             <div class="metric light-line"><p>[+] Intensidad</p><b>23%</b></div>
             <strong>Mayoría de escritura clara y estable.</strong>
+            <div class="card-detail">
+              <p>El peso tipográfico bajo y el ritmo regular se asocian a estados de claridad.</p>
+            </div>
           </article>
 
-          <article class="card dark-card reveal">
+          <article class="card dark-card reveal expandable">
             <span class="label">Insight de KERNN</span>
             <p>Sugerencia de práctica</p>
             <h2>Explorá la duda sin expandir el tracking.</h2>
+            <div class="card-detail">
+              <p>La sugerencia aparece como guía, no como diagnóstico cerrado.</p>
+            </div>
           </article>
 
-          <article class="card dark-card reveal">
+          <article class="card dark-card reveal expandable">
             <span class="label">Objetivos de ritual</span>
             <div class="metric"><p>Meta de Mayo</p><b>25 entradas</b></div>
             <div class="metric"><p>Actual</p><b>2/25</b></div>
             <div class="metric"><p>Racha</p><b>2 días</b></div>
+            <div class="card-detail">
+              <p>El objetivo no mide productividad: mide continuidad sensible.</p>
+            </div>
           </article>
 
-          <article class="card light-card reveal">
+          <article class="card light-card reveal expandable">
             <span class="label dark">Gestión de datos</span>
             <div class="option"><b>✓</b><p>Exportar historial</p></div>
             <div class="option"><b>×</b><p>Eliminar entradas</p></div>
+            <div class="card-detail">
+              <p>El historial permite volver sobre cambios de tono, ritmo y estructura.</p>
+            </div>
           </article>
         </section>
       </section>
 
       <footer class="bottom-nav">
-        <button class="active" type="button">
+        <button class="active" type="button" data-target="top">
           <span>⌂</span>
           <p>Inicio</p>
         </button>
 
-        <button type="button">
+        <button type="button" data-target="actividad">
           <span>✎</span>
           <p>Actividad</p>
         </button>
 
-        <button type="button">
+        <button type="button" data-target="analisis">
           <span>◉</span>
           <p>Perfil</p>
         </button>
