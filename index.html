@@ -1,267 +1,461 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>El Observatorio</title>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Tipografía -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <title>El Observatorio</title>
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="style.css">
-
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
-    <!-- ===================================== -->
-    <!-- BOTON OBSERVATORIO -->
-    <!-- ===================================== -->
+  <!-- =======================================================
+       BOTÓN GLOBAL: VOLVER AL OBSERVATORIO / HOME
+  ======================================================== -->
+  <button class="home-trigger" data-target="home" aria-label="Volver al Observatorio">
+    <span>EL OBSERVATORIO</span>
+  </button>
 
-    <div class="observatorio-btn">
+  <!-- =======================================================
+       NAVEGACIÓN GLOBAL: CONSTELACIÓN
+  ======================================================== -->
+  <nav class="constellation-nav" aria-label="Navegación principal">
+    <button class="nav-node nav-sombra" data-target="sombra" aria-label="Ir a Sombra">
+      <span>001 SOMBRA</span>
+    </button>
 
-        <span>EL OBSERVATORIO</span>
+    <button class="nav-node nav-estructura" data-target="estructura" aria-label="Ir a Estructura">
+      <span>002 ESTRUCTURA</span>
+    </button>
+
+    <button class="nav-node nav-reflejo" data-target="reflejo" aria-label="Ir a Reflejo">
+      <span>003 REFLEJO</span>
+    </button>
+
+    <button class="nav-node nav-vacio" data-target="vacio" aria-label="Ir a Vacío">
+      <span>004 VACÍO</span>
+    </button>
+
+    <div class="constellation-lines" aria-hidden="true"></div>
+  </nav>
+
+  <!-- =======================================================
+       00 — INTRO
+       PDF: pantallas 1-2
+       Interacción: Hover + Click en OBSERVAMOS
+  ======================================================== -->
+  <section id="intro" class="screen intro-screen">
+
+    <div class="texture-layer"></div>
+
+    <div class="intro-phrase">
+      <p>HAY COSAS QUE VEMOS TODOS LOS DÍAS.</p>
+      <p>Y HAY COSAS QUE SOLO</p>
+
+      <button class="observamos-word" data-target="home">
+        OBSERVAMOS
+      </button>
+    </div>
+
+  </section>
+
+  <!-- =======================================================
+       01 — HOME / MAPA GENERAL
+       PDF: pantallas 3-5
+       Interacción: Hover + Click en secciones
+  ======================================================== -->
+  <section id="home" class="screen home-screen">
+
+    <div class="texture-layer"></div>
+
+    <div class="home-title">
+      <h1>EL<br>OBSERVATORIO</h1>
+    </div>
+
+    <div class="home-sections">
+
+      <button class="home-section-item" data-target="sombra">
+        <span class="number">001</span>
+        <span class="label">SOMBRA</span>
+      </button>
+
+      <button class="home-section-item" data-target="estructura">
+        <span class="number">002</span>
+        <span class="label">ESTRUCTURA</span>
+      </button>
+
+      <button class="home-section-item" data-target="reflejo">
+        <span class="number">003</span>
+        <span class="label">REFLEJO</span>
+      </button>
+
+      <button class="home-section-item" data-target="vacio">
+        <span class="number">004</span>
+        <span class="label">VACÍO</span>
+      </button>
 
     </div>
 
-    <!-- ===================================== -->
-    <!-- CONSTELACION -->
-    <!-- ===================================== -->
+  </section>
 
-    <nav class="constelacion-nav">
+  <!-- =======================================================
+       02 — 001 SOMBRA / INTRO
+       PDF: pantallas 6-7
+       Interacción: Hover + Click a Estructura / inicio juego
+  ======================================================== -->
+  <section id="sombra" class="screen sombra-screen">
 
-        <a href="#sombra">001 SOMBRA</a>
+    <div class="texture-layer"></div>
 
-        <a href="#estructura">002 ESTRUCTURA</a>
+    <div class="section-code">001</div>
 
-        <a href="#reflejo">003 REFLEJO</a>
+    <h2 class="section-title">SOMBRA</h2>
 
-        <a href="#vacio">004 VACÍO</a>
+    <div class="sombra-intro">
+      <p>Hay información que permanece oculta</p>
+      <p>Mové el cursor para encontrar la información</p>
+      <p>Encontrala.</p>
+    </div>
 
-    </nav>
+    <button class="next-section-link" data-target="estructura">
+      ESTRUCTURA
+    </button>
 
-    <!-- ===================================== -->
-    <!-- INTRO -->
-    <!-- ===================================== -->
+    <button class="start-game-btn">
+      INICIAR OBSERVACIÓN
+    </button>
 
-    <section id="intro">
+  </section>
 
-        <div class="intro-content">
+  <!-- =======================================================
+       02B — SOMBRA / JUEGO
+       PDF: pantallas 13-25
+       Interacción: cursor revela palabras
+  ======================================================== -->
+  <section id="sombra-game" class="screen sombra-game-screen">
 
-            <h1>EL OBSERVATORIO</h1>
+    <div class="texture-layer"></div>
 
-            <p>
-                El estudio es como un observatorio
-                que transforma la observación
-                en conocimiento y el conocimiento
-                en diseño.
-            </p>
+    <div class="game-ui">
+      <p class="game-counter">Información encontrada: <span id="found-count">0</span>/4</p>
+      <p class="game-instruction">Mové el cursor para encontrar la información</p>
+    </div>
 
-            <button id="observamos-btn">
+    <div class="reveal-lens" aria-hidden="true"></div>
 
-                OBSERVAMOS
+    <div class="hidden-words-area">
 
-            </button>
+      <button class="hidden-word word-observar" data-word="OBSERVAR">
+        OBSERVAR
+      </button>
 
-        </div>
+      <button class="hidden-word word-ver" data-word="VER">
+        VER
+      </button>
 
-    </section>
+      <button class="hidden-word word-comprender" data-word="COMPRENDER">
+        COMPRENDER
+      </button>
 
-    <!-- ===================================== -->
-    <!-- HOME -->
-    <!-- ===================================== -->
+      <button class="hidden-word word-disenar" data-word="DISEÑAR">
+        DISEÑAR
+      </button>
 
-    <section id="home">
+    </div>
 
-        <h2>EL OBSERVATORIO</h2>
+    <div class="game-result hidden">
 
-        <div class="home-descripcion">
+      <div class="result-constellation">
+        <span>VER</span>
+        <span>OBSERVAR</span>
+        <span>COMPRENDER</span>
+        <span>DISEÑAR</span>
+      </div>
 
-            <p>
-                Sistema de observación,
-                análisis y reflexión visual.
-            </p>
+      <div class="result-text">
+        <p>Todos vemos.</p>
+        <p>Pocos observan.</p>
+        <p>Comprender es interpretar lo observado.</p>
+        <p>Diseñar es darle una nueva forma.</p>
+      </div>
 
-        </div>
+      <button class="observation-complete" data-target="reflejo">
+        OBSERVACIÓN COMPLETADA
+      </button>
 
-    </section>
+    </div>
 
-    <!-- ===================================== -->
-    <!-- SOMBRA -->
-    <!-- ===================================== -->
+  </section>
 
-    <section id="sombra">
+  <!-- =======================================================
+       03 — 002 ESTRUCTURA / REGISTROS
+       PDF: pantallas 8-12
+       Interacción: hover + click sobre registros
+  ======================================================== -->
+  <section id="estructura" class="screen estructura-screen">
 
-        <div class="section-header">
+    <div class="texture-layer"></div>
 
-            <span>001</span>
+    <div class="section-code">002</div>
+
+    <h2 class="section-title">ESTRUCTURA</h2>
+
+    <div class="estructura-copy">
+      <p>Toda observación deja un registro.</p>
+      <p>Detrás de cada registro existe una estructura.</p>
+    </div>
+
+    <div class="registro-list">
+
+      <button class="registro-link active" data-registro="registro-01">
+        REGISTRO 1
+      </button>
+
+      <button class="registro-link" data-registro="registro-02">
+        REGISTRO 2
+      </button>
+
+      <button class="registro-link" data-registro="registro-03">
+        REGISTRO 3
+      </button>
+
+    </div>
+
+    <div class="registro-preview">
+      <span id="registro-category">PACKAGING</span>
+    </div>
+
+  </section>
+
+  <!-- =======================================================
+       03B — DETALLE REGISTROS
+       Interacción: click Registro 1 / Registro 2 / Registro 3
+  ======================================================== -->
+  <section id="registro-detail" class="screen registro-detail-screen">
+
+    <div class="texture-layer"></div>
+
+    <div class="registro-detail-nav">
+      <button data-registro="registro-01">Registro 1</button>
+      <button data-registro="registro-02">Registro 2</button>
+      <button data-registro="registro-03">Registro 3</button>
+    </div>
+
+    <article class="registro-detail active" id="registro-01">
+      <div class="registro-image">
+        <img src="assets/img/registro-01.jpg" alt="Registro 01">
+      </div>
+
+      <div class="registro-info">
+        <h3>Registro 1</h3>
+        <p>Sistema visual / Packaging</p>
+        <p>Observación transformada en pieza gráfica.</p>
+      </div>
+    </article>
 
-            <h2>SOMBRA</h2>
+    <article class="registro-detail" id="registro-02">
+      <div class="registro-image">
+        <img src="assets/img/registro-02.jpg" alt="Registro 02">
+      </div>
+
+      <div class="registro-info">
+        <h3>Registro 2</h3>
+        <p>Identidad de marca</p>
+        <p>Observación transformada en pieza gráfica.</p>
+      </div>
+    </article>
 
-        </div>
+    <article class="registro-detail" id="registro-03">
+      <div class="registro-image">
+        <img src="assets/img/registro-03.jpg" alt="Registro 03">
+      </div>
 
-        <div class="sombra-game">
+      <div class="registro-info">
+        <h3>Registro 3</h3>
+        <p>Sistema visual</p>
+        <p>Observación transformada en pieza gráfica.</p>
+      </div>
+    </article>
 
-            <div class="hidden-word">VER</div>
+  </section>
 
-            <div class="hidden-word">OBSERVAR</div>
+  <!-- =======================================================
+       04 — 003 REFLEJO / INTRO
+       PDF: pantallas 27-28
+       Interacción: click + scroll vertical
+  ======================================================== -->
+  <section id="reflejo" class="screen reflejo-screen">
 
-            <div class="hidden-word">COMPRENDER</div>
+    <div class="texture-layer"></div>
 
-            <div class="hidden-word">DISEÑAR</div>
+    <div class="section-code">003</div>
 
-        </div>
+    <h2 class="section-title">REFLEJO</h2>
 
-        <div class="sombra-status">
+    <div class="reflejo-copy">
+      <p>
+        Después de observar durante tanto tiempo,
+        el observatorio comenzó a observarse a sí mismo.
+      </p>
 
-            <span>0/4 ENCONTRADAS</span>
+      <p>
+        Estos conceptos representan los principales ejes
+        desde los cuales el estudio construye su mirada sobre el diseño.
+      </p>
+    </div>
 
-        </div>
+    <button class="scroll-next" data-target="reflejo-conceptos">
+      DESCUBRIR CONCEPTOS
+    </button>
 
-    </section>
+  </section>
 
-    <!-- ===================================== -->
-    <!-- ESTRUCTURA -->
-    <!-- ===================================== -->
+  <!-- =======================================================
+       04B — REFLEJO / CONCEPTOS
+       PDF: pantallas 29-31
+       Interacción: hover sobre conceptos
+  ======================================================== -->
+  <section id="reflejo-conceptos" class="screen reflejo-conceptos-screen">
 
-    <section id="estructura">
+    <div class="texture-layer"></div>
 
-        <div class="section-header">
+    <p class="hover-instruction">
+      HOVER SOBRE CADA CONCEPTO PARA DESCUBRIR MÁS
+    </p>
 
-            <span>002</span>
+    <div class="concept-map">
 
-            <h2>ESTRUCTURA</h2>
+      <button class="concept-item" data-concept="tipografia">
+        TIPOGRAFÍA
+      </button>
 
-        </div>
+      <button class="concept-item" data-concept="ciudad">
+        CIUDAD
+      </button>
 
-        <div class="registros">
+      <button class="concept-item active" data-concept="observacion">
+        OBSERVACIÓN
+      </button>
 
-            <article class="registro">
+      <button class="concept-item" data-concept="arquitectura">
+        ARQUITECTURA
+      </button>
 
-                <h3>REGISTRO 01</h3>
+      <button class="concept-item" data-concept="sistemas">
+        SISTEMAS
+      </button>
 
-                <img src="assets/img/proyecto1.jpg" alt="">
+    </div>
 
-                <p>Proyecto 01</p>
+    <div class="concept-description" id="concept-description">
+      Todo proyecto nace de una mirada atenta. Observar es descubrir aquello que otros pasan por alto.
+    </div>
 
-            </article>
+  </section>
 
-            <article class="registro">
+  <!-- =======================================================
+       05 — 004 VACÍO / INTRO
+       PDF: pantallas 32-33
+       Interacción: hover + click
+  ======================================================== -->
+  <section id="vacio" class="screen vacio-screen">
 
-                <h3>REGISTRO 02</h3>
+    <div class="texture-layer"></div>
 
-                <img src="assets/img/proyecto2.jpg" alt="">
+    <div class="section-code">004</div>
 
-                <p>Proyecto 02</p>
+    <h2 class="section-title">VACÍO</h2>
 
-            </article>
+    <button class="vacio-question">
+      ¿QUÉ PODRÍA EXISTIR AQUÍ?
+    </button>
 
-            <article class="registro">
+  </section>
 
-                <h3>REGISTRO 03</h3>
+  <!-- =======================================================
+       05B — VACÍO / OBSERVADORES
+       PDF: pantallas 34-35
+       Interacción: hover + click en observador
+  ======================================================== -->
+  <section id="observadores" class="screen observadores-screen">
 
-                <img src="assets/img/proyecto3.jpg" alt="">
+    <div class="texture-layer"></div>
 
-                <p>Proyecto 03</p>
+    <h2 class="vacio-question-static">¿QUÉ PODRÍA EXISTIR AQUÍ?</h2>
 
-            </article>
+    <div class="observadores-list">
 
-        </div>
+      <button class="observador-link active" data-observador="agustin">
+        <span>OBSERVADOR 01</span>
+        <strong>AGUSTÍN HIDALGO</strong>
+      </button>
 
-    </section>
+      <button class="observador-link" data-observador="mijal">
+        <span>OBSERVADORA 02</span>
+        <strong>MIJAL AVERBUCH</strong>
+      </button>
 
-    <!-- ===================================== -->
-    <!-- REFLEJO -->
-    <!-- ===================================== -->
+      <button class="observador-link" data-observador="santiago">
+        <span>OBSERVADOR 03</span>
+        <strong>SANTIAGO AVERBUCH</strong>
+      </button>
 
-    <section id="reflejo">
+    </div>
 
-        <div class="section-header">
+  </section>
 
-            <span>003</span>
+  <!-- =======================================================
+       05C — VACÍO / PERFILES
+       PDF: pantallas 36-38
+       Interacción: click + scroll vertical
+  ======================================================== -->
+  <section id="perfil-observador" class="screen perfil-screen">
 
-            <h2>REFLEJO</h2>
+    <div class="texture-layer"></div>
 
-        </div>
+    <article class="perfil active" id="perfil-agustin">
+      <h2>AGUSTÍN HIDALGO</h2>
 
-        <div class="conceptos">
+      <p>
+        Licenciado en Comunicación Visual y fundador de El Observatorio.
+        Mi trabajo se centra en identidades visuales, sistemas gráficos
+        y experiencias digitales donde la observación funciona como
+        herramienta de diseño.
+      </p>
+    </article>
 
-            <div class="concepto">OBSERVACIÓN</div>
+    <article class="perfil" id="perfil-mijal">
+      <h2>MIJAL AVERBUCH</h2>
 
-            <div class="concepto">SISTEMAS</div>
+      <p>
+        Licenciada en Comunicación Visual y cofundadora de El Observatorio.
+        Mi trabajo se centra en identidades visuales, sistemas gráficos
+        y experiencias digitales donde la observación funciona como
+        herramienta de diseño.
+      </p>
+    </article>
 
-            <div class="concepto">TIPOGRAFÍA</div>
+    <article class="perfil" id="perfil-santiago">
+      <h2>SANTIAGO AVERBUCH</h2>
 
-            <div class="concepto">CIUDAD</div>
+      <p>
+        Director de desarrollo digital y experiencias interactivas.
+        Su trabajo transforma conceptos en sistemas funcionales,
+        intuitivos y técnicamente sólidos.
+      </p>
+    </article>
 
-            <div class="concepto">ARQUITECTURA</div>
+  </section>
 
-        </div>
-
-        <div class="concepto-info">
-
-            <p>
-
-                Información del concepto seleccionado.
-
-            </p>
-
-        </div>
-
-    </section>
-
-    <!-- ===================================== -->
-    <!-- VACIO -->
-    <!-- ===================================== -->
-
-    <section id="vacio">
-
-        <div class="section-header">
-
-            <span>004</span>
-
-            <h2>VACÍO</h2>
-
-        </div>
-
-        <div class="pregunta">
-
-            ¿QUÉ PODRÍA EXISTIR AQUÍ?
-
-        </div>
-
-        <div class="observadores">
-
-            <article class="observador">
-
-                <h3>AGUSTÍN HIDALGO</h3>
-
-            </article>
-
-            <article class="observador">
-
-                <h3>MIJAL AVERBUCH</h3>
-
-            </article>
-
-            <article class="observador">
-
-                <h3>SANTIAGO AVERBUCH</h3>
-
-            </article>
-
-        </div>
-
-    </section>
-
-    <script src="script.js"></script>
+  <!-- JS -->
+  <script src="script.js"></script>
 
 </body>
-
 </html>
