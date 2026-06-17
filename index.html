@@ -1,341 +1,267 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>KERNN OS</title>
-  <link rel="stylesheet" href="style.css" />
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>El Observatorio</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
-  <main class="app" id="app">
 
-    <!-- PANTALLA 1: SPLASH SCREEN -->
-    <section class="screen splash-screen is-active" id="splashScreen">
+    <!-- ===================================== -->
+    <!-- BOTON OBSERVATORIO -->
+    <!-- ===================================== -->
 
-      <div class="system-grid" aria-hidden="true"></div>
+    <div class="observatorio-btn">
 
-      <div class="typographic-background" aria-hidden="true">
-        <span>TRACKING</span>
-        <span>WEIGHT</span>
-        <span>LEADING</span>
-        <span>KERNING</span>
-      </div>
+        <span>EL OBSERVATORIO</span>
 
-      <button class="splash-core" id="splashButton" type="button" aria-label="Ingresar a KERNN">
+    </div>
 
-        <div class="kernn-word kernn-word-splash" id="splashWord">
-          <span>K</span>
-          <span>E</span>
-          <span>R</span>
-          <span>N</span>
-          <span>N</span>
+    <!-- ===================================== -->
+    <!-- CONSTELACION -->
+    <!-- ===================================== -->
+
+    <nav class="constelacion-nav">
+
+        <a href="#sombra">001 SOMBRA</a>
+
+        <a href="#estructura">002 ESTRUCTURA</a>
+
+        <a href="#reflejo">003 REFLEJO</a>
+
+        <a href="#vacio">004 VACÍO</a>
+
+    </nav>
+
+    <!-- ===================================== -->
+    <!-- INTRO -->
+    <!-- ===================================== -->
+
+    <section id="intro">
+
+        <div class="intro-content">
+
+            <h1>EL OBSERVATORIO</h1>
+
+            <p>
+                El estudio es como un observatorio
+                que transforma la observación
+                en conocimiento y el conocimiento
+                en diseño.
+            </p>
+
+            <button id="observamos-btn">
+
+                OBSERVAMOS
+
+            </button>
+
         </div>
-
-        <div class="splash-axis-line" aria-hidden="true"></div>
-
-        <p class="splash-subtitle">
-          El espejo tipográfico de tu mente
-        </p>
-
-      </button>
-
-      <div class="splash-footer" aria-hidden="true">
-        <span>expansión</span>
-        <span>contracción</span>
-        <span>ritmo</span>
-      </div>
 
     </section>
 
-    <!-- PANTALLA 2: LOGIN -->
-    <section class="screen login-screen" id="loginScreen">
+    <!-- ===================================== -->
+    <!-- HOME -->
+    <!-- ===================================== -->
 
-      <div class="system-grid" aria-hidden="true"></div>
+    <section id="home">
 
-      <header class="login-header">
+        <h2>EL OBSERVATORIO</h2>
 
-        <div class="kernn-word kernn-word-login" id="loginWord">
-          <span>K</span>
-          <span>E</span>
-          <span>R</span>
-          <span>N</span>
-          <span>N</span>
+        <div class="home-descripcion">
+
+            <p>
+                Sistema de observación,
+                análisis y reflexión visual.
+            </p>
+
         </div>
-
-        <p>
-          La identidad se ordena como interfaz.
-        </p>
-
-      </header>
-
-      <section class="login-form-panel">
-
-        <span class="ui-label">
-          acceso privado
-        </span>
-
-        <h1>
-          Iniciar sesión
-        </h1>
-
-        <form>
-
-          <label for="email">
-            Correo
-          </label>
-
-          <div class="input-line">
-            <span aria-hidden="true"></span>
-            <input id="email" type="email" value="nombre@mail.com" />
-          </div>
-
-          <label for="password">
-            Contraseña
-          </label>
-
-          <div class="input-line">
-            <span aria-hidden="true"></span>
-            <input id="password" type="password" value="12345678" />
-          </div>
-
-          <button class="primary-button" id="enterButton" type="button">
-            <span>ENTRAR</span>
-            <b>→</b>
-          </button>
-
-        </form>
-
-      </section>
 
     </section>
 
-    <!-- PANTALLA 3: HOME -->
-    <section class="screen home-screen" id="homeScreen">
+    <!-- ===================================== -->
+    <!-- SOMBRA -->
+    <!-- ===================================== -->
 
-      <div class="system-grid" aria-hidden="true"></div>
-      <div class="scroll-progress" id="scrollProgress"></div>
+    <section id="sombra">
 
-      <header class="home-header">
+        <div class="section-header">
 
-        <button class="menu-button" id="menuButton" type="button" aria-label="Abrir menú">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+            <span>001</span>
 
-        <div class="kernn-word kernn-word-home" id="homeWord">
-          <span>K</span>
-          <span>E</span>
-          <span>R</span>
-          <span>N</span>
-          <span>N</span>
-        </div>
-
-        <button class="profile-button" type="button" aria-label="Perfil">
-          ◌
-        </button>
-
-      </header>
-
-      <aside class="side-menu" id="sideMenu">
-
-        <button class="close-menu" id="closeMenu" type="button" aria-label="Cerrar menú">
-          ×
-        </button>
-
-        <div class="kernn-word kernn-word-menu">
-          <span>K</span>
-          <span>E</span>
-          <span>R</span>
-          <span>N</span>
-          <span>N</span>
-        </div>
-
-        <nav>
-          <button type="button" data-section="homeIntro">Inicio</button>
-          <button type="button" data-section="typographicProcess">Proceso</button>
-          <button type="button" data-section="axisSystem">Actividad</button>
-          <button type="button" data-section="readingSystem">Perfil</button>
-        </nav>
-
-      </aside>
-
-      <div class="menu-overlay" id="menuOverlay"></div>
-
-      <section class="home-intro reveal-section" id="homeIntro">
-
-        <span class="ui-label dark">
-          sistema activo
-        </span>
-
-        <h1 class="variable-heading" id="variableHeading">
-          Comienza a escribir
-        </h1>
-
-        <p>
-          Registrá tu estado emocional a través del ritmo, el espaciado y la intensidad de tu escritura.
-        </p>
-
-        <button class="write-button" id="writeButton" type="button" aria-label="Comenzar escritura">
-          <span></span>
-        </button>
-
-        <div class="quick-entry" id="quickEntry">
-          <small>Entrada rápida</small>
-          <p contenteditable="true">
-            Hoy mi escritura se siente abierta, pero todavía busca un ritmo propio...
-          </p>
-        </div>
-
-      </section>
-
-      <section class="typographic-process" id="typographicProcess">
-
-        <div class="sticky-process">
-
-          <span class="ui-label">
-            recorrido tipográfico
-          </span>
-
-          <h2 id="processTitle">
-            La palabra se expande.
-          </h2>
-
-          <div class="kernn-word kernn-word-process" id="processWord">
-            <span>K</span>
-            <span>E</span>
-            <span>R</span>
-            <span>N</span>
-            <span>N</span>
-          </div>
-
-          <div class="process-lines" aria-hidden="true">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
+            <h2>SOMBRA</h2>
 
         </div>
 
-      </section>
+        <div class="sombra-game">
 
-      <section class="axis-system reveal-section" id="axisSystem">
+            <div class="hidden-word">VER</div>
 
-        <span class="ui-label">
-          ejes tipográficos
-        </span>
+            <div class="hidden-word">OBSERVAR</div>
 
-        <h2>
-          La emoción se mide como forma
-        </h2>
+            <div class="hidden-word">COMPRENDER</div>
 
-        <article class="axis-row" data-axis="tracking">
-          <p>Tracking</p>
-          <div><span></span></div>
-          <b>+0.02</b>
-        </article>
+            <div class="hidden-word">DISEÑAR</div>
 
-        <article class="axis-row" data-axis="weight">
-          <p>Weight</p>
-          <div><span></span></div>
-          <b>410</b>
-        </article>
+        </div>
 
-        <article class="axis-row" data-axis="leading">
-          <p>Leading</p>
-          <div><span></span></div>
-          <b>1.30</b>
-        </article>
+        <div class="sombra-status">
 
-      </section>
+            <span>0/4 ENCONTRADAS</span>
 
-      <section class="kinetic-strip" aria-hidden="true">
-        <span>TRACKING / WEIGHT / LEADING / RHYTHM / DENSITY /</span>
-        <span>TRACKING / WEIGHT / LEADING / RHYTHM / DENSITY /</span>
-      </section>
-
-      <section class="reading-system reveal-section" id="readingSystem">
-
-        <article class="reading-card dark-card">
-
-          <span class="ui-label">
-            núcleo
-          </span>
-
-          <h2>
-            ¿Cómo resuenan tus silencios?
-          </h2>
-
-          <p>
-            Una pregunta diaria generada desde el comportamiento de tu escritura.
-          </p>
-
-        </article>
-
-        <article class="reading-card light-card">
-
-          <span class="ui-label dark">
-            última entrada
-          </span>
-
-          <h3>
-            Entrada del lunes
-          </h3>
-
-          <p class="sample-text">
-            No sé muy bien...
-          </p>
-
-          <p>
-            Tracking expandido, ritmo irregular.
-          </p>
-
-        </article>
-
-        <article class="reading-card dark-card wide-card">
-
-          <span class="ui-label">
-            ritmo semanal
-          </span>
-
-          <div class="bar-system" aria-hidden="true">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-
-        </article>
-
-      </section>
-
-      <footer class="bottom-nav">
-
-        <button class="active" type="button" data-section="homeIntro">
-          <span>⌂</span>
-          <p>Inicio</p>
-        </button>
-
-        <button type="button" data-section="axisSystem">
-          <span>≋</span>
-          <p>Actividad</p>
-        </button>
-
-        <button type="button" data-section="readingSystem">
-          <span>◉</span>
-          <p>Perfil</p>
-        </button>
-
-      </footer>
+        </div>
 
     </section>
 
-  </main>
+    <!-- ===================================== -->
+    <!-- ESTRUCTURA -->
+    <!-- ===================================== -->
 
-  <script src="script.js"></script>
+    <section id="estructura">
+
+        <div class="section-header">
+
+            <span>002</span>
+
+            <h2>ESTRUCTURA</h2>
+
+        </div>
+
+        <div class="registros">
+
+            <article class="registro">
+
+                <h3>REGISTRO 01</h3>
+
+                <img src="assets/img/proyecto1.jpg" alt="">
+
+                <p>Proyecto 01</p>
+
+            </article>
+
+            <article class="registro">
+
+                <h3>REGISTRO 02</h3>
+
+                <img src="assets/img/proyecto2.jpg" alt="">
+
+                <p>Proyecto 02</p>
+
+            </article>
+
+            <article class="registro">
+
+                <h3>REGISTRO 03</h3>
+
+                <img src="assets/img/proyecto3.jpg" alt="">
+
+                <p>Proyecto 03</p>
+
+            </article>
+
+        </div>
+
+    </section>
+
+    <!-- ===================================== -->
+    <!-- REFLEJO -->
+    <!-- ===================================== -->
+
+    <section id="reflejo">
+
+        <div class="section-header">
+
+            <span>003</span>
+
+            <h2>REFLEJO</h2>
+
+        </div>
+
+        <div class="conceptos">
+
+            <div class="concepto">OBSERVACIÓN</div>
+
+            <div class="concepto">SISTEMAS</div>
+
+            <div class="concepto">TIPOGRAFÍA</div>
+
+            <div class="concepto">CIUDAD</div>
+
+            <div class="concepto">ARQUITECTURA</div>
+
+        </div>
+
+        <div class="concepto-info">
+
+            <p>
+
+                Información del concepto seleccionado.
+
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- ===================================== -->
+    <!-- VACIO -->
+    <!-- ===================================== -->
+
+    <section id="vacio">
+
+        <div class="section-header">
+
+            <span>004</span>
+
+            <h2>VACÍO</h2>
+
+        </div>
+
+        <div class="pregunta">
+
+            ¿QUÉ PODRÍA EXISTIR AQUÍ?
+
+        </div>
+
+        <div class="observadores">
+
+            <article class="observador">
+
+                <h3>AGUSTÍN HIDALGO</h3>
+
+            </article>
+
+            <article class="observador">
+
+                <h3>MIJAL AVERBUCH</h3>
+
+            </article>
+
+            <article class="observador">
+
+                <h3>SANTIAGO AVERBUCH</h3>
+
+            </article>
+
+        </div>
+
+    </section>
+
+    <script src="script.js"></script>
+
 </body>
+
 </html>
