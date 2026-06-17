@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>002 Estructura</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="page page-estructura">
+
+  <a href="home.html" class="back-home"><span>EL OBSERVATORIO</span></a>
+
+  <nav class="constelacion">
+    <a href="sombra.html">001 SOMBRA</a>
+    <a href="estructura.html" class="activo">002 ESTRUCTURA</a>
+    <a href="reflejo.html">003 REFLEJO</a>
+    <a href="vacio.html">004 VACÍO</a>
+  </nav>
+
+  <main class="estructura">
+    <section class="estructura-home">
+      <h1><span>002</span>ESTRUCTURA</h1>
+      <p>Toda observación deja un registro.</p>
+      <p>Detrás de cada registro existe una estructura.</p>
+
+      <div class="registros-nav">
+        <button data-registro="registro1">REGISTRO 1</button>
+        <button data-registro="registro2">REGISTRO 2</button>
+        <button data-registro="registro3">REGISTRO 3</button>
+      </div>
+    </section>
+
+    <section class="registro-detalle activo" id="registro1">
+      <div class="registro-img">
+        <img src="assets/img/registro-01.jpg" alt="Registro 1">
+      </div>
+      <div class="registro-info">
+        <h2>Registro 1</h2>
+        <p>Sistema visual / Packaging</p>
+        <p>Observación transformada en pieza gráfica.</p>
+      </div>
+    </section>
+
+    <section class="registro-detalle" id="registro2">
+      <div class="registro-img">
+        <img src="assets/img/registro-02.jpg" alt="Registro 2">
+      </div>
+      <div class="registro-info">
+        <h2>Registro 2</h2>
+        <p>Identidad de marca</p>
+        <p>Observación transformada en pieza gráfica.</p>
+      </div>
+    </section>
+
+    <section class="registro-detalle" id="registro3">
+      <div class="registro-img">
+        <img src="assets/img/registro-03.jpg" alt="Registro 3">
+      </div>
+      <div class="registro-info">
+        <h2>Registro 3</h2>
+        <p>Sistema visual</p>
+        <p>Observación transformada en pieza gráfica.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

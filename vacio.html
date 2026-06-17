@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>004 Vacío</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="page page-vacio">
+
+  <a href="home.html" class="back-home"><span>EL OBSERVATORIO</span></a>
+
+  <nav class="constelacion">
+    <a href="sombra.html">001 SOMBRA</a>
+    <a href="estructura.html">002 ESTRUCTURA</a>
+    <a href="reflejo.html">003 REFLEJO</a>
+    <a href="vacio.html" class="activo">004 VACÍO</a>
+  </nav>
+
+  <main class="vacio">
+    <section class="vacio-inicio">
+      <h1><span>004</span>VACÍO</h1>
+      <button id="mostrar-observadores">¿QUÉ PODRÍA EXISTIR AQUÍ?</button>
+    </section>
+
+    <section class="observadores" id="observadores">
+      <button data-perfil="agustin">
+        <span>OBSERVADOR 01</span>
+        AGUSTÍN HIDALGO
+      </button>
+
+      <button data-perfil="mijal">
+        <span>OBSERVADORA 02</span>
+        MIJAL AVERBUCH
+      </button>
+
+      <button data-perfil="santiago">
+        <span>OBSERVADOR 03</span>
+        SANTIAGO AVERBUCH
+      </button>
+    </section>
+
+    <section class="perfil activo" id="agustin">
+      <h2>AGUSTÍN HIDALGO</h2>
+      <p>Licenciado en Comunicación Visual y fundador de El Observatorio. Mi trabajo se centra en identidades visuales, sistemas gráficos y experiencias digitales donde la observación funciona como herramienta de diseño.</p>
+    </section>
+
+    <section class="perfil" id="mijal">
+      <h2>MIJAL AVERBUCH</h2>
+      <p>Licenciada en Comunicación Visual y cofundadora de El Observatorio. Mi trabajo se centra en identidades visuales, sistemas gráficos y experiencias digitales donde la observación funciona como herramienta de diseño.</p>
+    </section>
+
+    <section class="perfil" id="santiago">
+      <h2>SANTIAGO AVERBUCH</h2>
+      <p>Director de desarrollo digital y experiencias interactivas. Su trabajo transforma conceptos en sistemas funcionales, intuitivos y técnicamente sólidos.</p>
+    </section>
+  </main>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

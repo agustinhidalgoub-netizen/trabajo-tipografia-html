@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>001 Sombra</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="page page-sombra">
+
+  <a href="home.html" class="back-home"><span>EL OBSERVATORIO</span></a>
+
+  <nav class="constelacion">
+    <a href="sombra.html" class="activo">001 SOMBRA</a>
+    <a href="estructura.html">002 ESTRUCTURA</a>
+    <a href="reflejo.html">003 REFLEJO</a>
+    <a href="vacio.html">004 VACÍO</a>
+  </nav>
+
+  <main class="sombra">
+    <section class="sombra-intro">
+      <h1><span>001</span>SOMBRA</h1>
+      <div>
+        <p>Hay información que permanece oculta.</p>
+        <p>Mové el cursor para encontrar la información.</p>
+        <p>Encontrala.</p>
+      </div>
+    </section>
+
+    <section class="sombra-juego">
+      <p class="contador">Información encontrada: <span id="contador">0</span>/4</p>
+      <p class="instruccion">Mové el cursor para encontrar la información</p>
+
+      <button class="palabra" data-word="OBSERVAR">OBSERVAR</button>
+      <button class="palabra" data-word="VER">VER</button>
+      <button class="palabra" data-word="COMPRENDER">COMPRENDER</button>
+      <button class="palabra" data-word="DISEÑAR">DISEÑAR</button>
+
+      <div class="resultado-juego">
+        <p>Todos vemos.</p>
+        <p>Pocos observan.</p>
+        <p>Comprender es interpretar lo observado.</p>
+        <p>Diseñar es darle una nueva forma.</p>
+        <a href="reflejo.html">OBSERVACIÓN COMPLETADA</a>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
